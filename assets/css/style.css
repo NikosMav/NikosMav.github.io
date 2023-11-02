@@ -835,6 +835,33 @@ main {
   line-height: 1.6;
 }
 
+.timeline-item {
+  position: relative;
+  display: flex;
+  align-items: flex-start; /* Align the items to the top */
+}
+
+.timeline-item-content {
+  display: flex;
+}
+
+.timeline-item-image {
+  max-width: 100%; /* limits the image to not exceed the container's width */
+  height: 8vh; /* maintains the aspect ratio */
+  object-fit: contain; /* ensures the image is fully visible, may leave some space */
+}
+
+.text-content {
+  flex: 1; /* Take up the remaining space */
+  margin-left: 15px;
+}
+
+.timeline-item::after {
+  /* Adjust this if necessary to align with your new layout */
+  /* ... */
+}
+
+
 
 /**
  * skills 
