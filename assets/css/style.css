@@ -501,11 +501,61 @@ main {
   color: var(--light-gray);
   font-size: var(--fs-6);
   font-weight: var(--fw-300);
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .about-text p { margin-bottom: 15px; }
 
+/**
+ * #Where to find me 
+ */
+
+ .where-to-find-me {
+  text-align: center;
+  padding: 50px 0;
+}
+
+.where-to-find-me-title {
+  margin-bottom: 30px;
+}
+
+.where-to-find-me-list {
+  list-style: none;
+  padding: 0;
+}
+
+.where-to-find-me-item {
+  display: inline-block;
+  margin: 0 20px;
+}
+
+.where-to-find-me-item a {
+  text-decoration: none;
+  color: #333; /* or your preferred font color */
+  text-align: center;
+}
+
+.where-to-find-me-item .image-container {
+  width: 150px;  /* Fixed width */
+  height: 70px;  /* Fixed height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;  /* This ensures that the image does not break out of the container */
+  border-radius: 10px;  /* Rounded corners */
+  background-color: #f2f2f2;  /* Optional: background color if the image is transparent */
+}
+
+.where-to-find-me-item img {
+  width: 100%;  /* This will stretch the image to fill the width */
+  height: 100%;  /* This will stretch the image to fill the height */
+  display: block;  /* Removes bottom space under the image */
+  object-fit: contain;  /* This will make the image fill the container, stretching it if necessary */
+}
+
+
+
+/* Add more styling according to your website's theme */
 
 
 /**
@@ -846,10 +896,13 @@ main {
 }
 
 .timeline-item-image {
-  max-width: 100%; /* limits the image to not exceed the container's width */
-  height: 8vh; /* maintains the aspect ratio */
-  object-fit: contain; /* ensures the image is fully visible, may leave some space */
+  width: 80px;  /* Fixed width */
+  height: 80px; /* Fixed height, can be set to the same as width for a square, or to a different value depending on desired aspect ratio */
+  object-fit: cover; /* Cover the area, potentially clipping the image */
+  border-radius: 4px; /* Optional: Rounds the corners of the image */
+  overflow: hidden; /* Ensures the clipped parts of the image do not overflow */
 }
+
 
 .text-content {
   flex: 1; /* Take up the remaining space */
