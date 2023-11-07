@@ -247,23 +247,6 @@ article.active {
   border-radius: 3px;
 }
 
-.has-scrollbar::-webkit-scrollbar {
-  width: 5px; /* for vertical scrollbar */
-  height: 5px; /* for horizontal scrollbar */
-}
-
-.has-scrollbar::-webkit-scrollbar-track {
-  background: var(--onyx);
-  border-radius: 5px;
-}
-
-.has-scrollbar::-webkit-scrollbar-thumb {
-  background: var(--orange-yellow-crayola);
-  border-radius: 5px;
-}
-
-.has-scrollbar::-webkit-scrollbar-button { width: 20px; }
-
 .content-card {
   position: relative;
   background: var(--border-gradient-onyx);
@@ -480,6 +463,36 @@ main {
 .navbar-link.active { color: var(--orange-yellow-crayola); }
 
 
+/*-----------------------------------*\
+  #SCROLLBAR
+\*-----------------------------------*/
+
+/* Global scrollbar styles */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--orange-yellow-crayola) var(--onyx);
+}
+
+/* Chrome, Edge, and Safari */
+html::-webkit-scrollbar {
+  width: 5px; /* for vertical scrollbar */
+  height: 5px; /* for horizontal scrollbar */
+}
+
+html::-webkit-scrollbar-track {
+  background: var(--onyx);
+  border-radius: 5px;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: var(--orange-yellow-crayola);
+  border-radius: 5px;
+}
+
+/* Optional: If you want to style the scrollbar buttons */
+html::-webkit-scrollbar-button {
+  width: 20px; /* for the scrollbar buttons */
+}
 
 
 
@@ -536,6 +549,11 @@ main {
   overflow: hidden;  /* This ensures that the image does not break out of the container */
   border-radius: 10px;  /* Rounded corners */
   background-color: #f2f2f2;  /* Optional: background color if the image is transparent */
+  transition: transform 0.3s ease; /* Smooth transformation on hover */
+}
+
+.image-container:hover {
+  transform: scale(1.05); /* Slightly increase the size on hover */
 }
 
 .where-to-find-me-item img {
@@ -545,9 +563,79 @@ main {
   object-fit: contain;  /* This will make the image fill the container, stretching it if necessary */
 }
 
+/**
+ * #CV
+ */
 
+ .cv-section {
+  text-align: center; /* Center the CV section contents */
+  padding: 20px;
+}
 
-/* Add more styling according to your website's theme */
+.cv-thumbnail {
+  margin-top: 15px;
+  display: inline-block; /* Allows for centering */
+  overflow: hidden; /* Ensures the image fits within the border radius */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: adds a shadow for depth */
+  transition: transform 0.3s ease; /* Smooth transformation on hover */
+  cursor: pointer;
+}
+
+.cv-thumbnail:hover {
+  transform: scale(1.05); /* Slightly increase the size on hover */
+}
+
+.cv-thumbnail img {
+  width: auto; /* Keep the image's aspect ratio */
+  height: 100px; /* Adjust the height to your preference */
+  display: block; /* Removes bottom space under the image */
+  object-fit: cover; /* Ensures the image covers the area */
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Increased z-index */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+  opacity: 0; /* Make the modal transparent */
+  transition: opacity 0.5s ease; /* Animate the opacity */
+}
+
+/* Show the modal */
+.modal.show {
+  display: block; /* Show the modal */
+  opacity: 1; /* Make the modal opaque */
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: 5% auto; /* 5% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 70%; /* Adjusted width */
+  height: 90%; /* Adjusted height */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: all 0.5s; /* Animate all changes */
+  border-radius: 10px; /* Rounded corners */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+}
 
 
 /**
