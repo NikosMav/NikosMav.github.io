@@ -1214,7 +1214,10 @@ html::-webkit-scrollbar-button {
   filter: grayscale(1) invert(1);
 }
 
-.contact-form { margin-bottom: 10px; }
+.contact-form {
+  margin-bottom: 10px;
+  margin-top: 50px;
+}
 
 .form-title { margin-bottom: 20px; }
 
