@@ -582,7 +582,14 @@
                   />
                   <div class="text-content">
                     <h4 class="h4 timeline-item-title">
-                      National Kapodistrian University of Athens
+                      <a
+                        href="https://www.di.uoa.gr"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="university-link"
+                      >
+                        National Kapodistrian University of Athens
+                      </a>
                     </h4>
 
                     <h5 class="h5 timeline-item-subtitle">
@@ -591,14 +598,55 @@
 
                     <span>Oct 2017 — Oct 2023</span>
 
-                    <p class="timeline-text">
-                      My studies at the National Kapodistrian University were a
-                      transformative experience that provided me with a strong
-                      academic foundation in computer science and informatics.
-                      The university's rigorous curriculum exposed me to a broad
-                      spectrum of essential subjects, including network
-                      protocols, data structures, and software development.
-                    </p>
+                    <!-- Details initially hidden -->
+                    <div id="more-info1" style="display: none">
+                      <p class="timeline-text">
+                        <strong>Transformative Education:</strong> My journey at
+                        the National Kapodistrian University of Athens was an
+                        enlightening chapter that went beyond acquiring a
+                        Bachelor of Science in Informatics and
+                        Telecommunications. Surrounded by a thriving community
+                        of scholars, I was propelled into a world of research
+                        and innovation, sparking a profound enthusiasm for
+                        technology that extended well beyond academic confines.
+                      </p>
+
+                      <p class="timeline-text">
+                        <strong>Mentorship and Expertise:</strong> The esteemed
+                        faculty, renowned for their industry influence, provided
+                        unparalleled mentorship. Their guidance was instrumental
+                        in deepening my understanding of complex subjects such
+                        as algorithmic complexity, machine learning, software
+                        development and the intricate facets of cybersecurity.
+                      </p>
+
+                      <p class="timeline-text">
+                        <strong>Practical Application:</strong> The curriculum's
+                        emphasis on big projects and interactive workshops
+                        allowed me to translate theory into practice.
+                      </p>
+
+                      <p class="timeline-text">
+                        <strong>A Foundation for the Future:</strong> The fusion
+                        of stringent academics, real-world application, and
+                        active community engagement at the National Kapodistrian
+                        University of Athens has been indispensable. It has
+                        endowed me with a versatile toolkit and a
+                        forward-thinking outlook, poised to make a significant
+                        impact on technological progress and to navigate the
+                        complexities of our digital era.
+                      </p>
+
+                      <!-- Add more details here if needed -->
+                    </div>
+
+                    <!-- Show More/Less button -->
+                    <button
+                      onclick="toggleDetails('more-info1')"
+                      id="details-button"
+                    >
+                      Show More
+                    </button>
                   </div>
                 </div>
               </li>
@@ -633,16 +681,24 @@
                     </h5>
 
                     <span>Apr 2022 — Oct 2023</span>
+                    <div id="more-info2" style="display: none">
+                      <p class="timeline-text">
+                        During my academic journey, I had the valuable
+                        opportunity to work on a significant thesis project that
+                        contributed in the creation of the Museum of IT of the
+                        Department of Informatics & Telecommunications of NKUA.
+                        This endeavor revolved around my specialized task of
+                        developing a web application dedicated to the
+                        exploration of Ubiquitous Computing.
+                      </p>
+                    </div>
 
-                    <p class="timeline-text">
-                      During my academic journey, I had the valuable opportunity
-                      to work on a significant thesis project that contributed
-                      in the creation of the Museum of IT of the Department of
-                      Informatics & Telecommunications of NKUA. This endeavor
-                      revolved around my specialized task of developing a web
-                      application dedicated to the exploration of Ubiquitous
-                      Computing.
-                    </p>
+                    <button
+                      onclick="toggleDetails('more-info2')"
+                      id="details-button"
+                    >
+                      Show More
+                    </button>
                   </div>
                 </div>
               </li>
@@ -770,24 +826,36 @@
                   <div class="text-content">
                     <h4 class="h4 timeline-item-title">Student Volunteer</h4>
 
-                    <h5 class="h5 timeline-item-subtitle">ACM SIGCHI</h5>
+                    <h5 class="h5 timeline-item-subtitle">
+                      MobileHCI 2023 - ACM SIGCHI
+                    </h5>
 
                     <span>Sep 2023</span>
 
-                    <p class="timeline-text">
-                      Participated in MobileHCI 2023 as a student volunteer.
-                      Coordinated with other volunteers and organizers to ensure
-                      smooth functioning of sessions and events, managing duties
-                      spanning approximately 16-20 hours throughout the
-                      conference. Networked with global attendees, researchers,
-                      and industry professionals, fostering connections and
-                      enhancing understanding of the latest in mobile
-                      human-computer interaction. Assisted in on-site equipment
-                      testing and supported presenters during their talks and
-                      demos. Participated in orientation and training sessions,
-                      demonstrating commitment and responsibility towards the
-                      success of the conference.
-                    </p>
+                    <div id="more-info3" style="display: none">
+                      <p class="timeline-text">
+                        Participated in MobileHCI 2023 as a student volunteer.
+                        Coordinated with other volunteers and organizers to
+                        ensure smooth functioning of sessions and events,
+                        managing duties spanning approximately 16-20 hours
+                        throughout the conference. Networked with global
+                        attendees, researchers, and industry professionals,
+                        fostering connections and enhancing understanding of the
+                        latest in mobile human-computer interaction. Assisted in
+                        on-site equipment testing and supported presenters
+                        during their talks and demos. Participated in
+                        orientation and training sessions, demonstrating
+                        commitment and responsibility towards the success of the
+                        conference.
+                      </p>
+                    </div>
+
+                    <button
+                      onclick="toggleDetails('more-info3')"
+                      id="details-button"
+                    >
+                      Show More
+                    </button>
                   </div>
                 </div>
               </li>
@@ -800,17 +868,32 @@
                     alt="Certificate Thumbnail"
                   />
                   <div class="text-content">
-                    <h4 class="h4 timeline-item-title">Google Hash Code</h4>
+                    <h4 class="h4 timeline-item-title">
+                      Competition Participant
+                    </h4>
+
+                    <h5 class="h5 timeline-item-subtitle">
+                      Google Hash Code 2022
+                    </h5>
 
                     <span>Feb 2022</span>
 
-                    <p class="timeline-text">
-                      Participated in Google Hash Code 2022 hosted by NTUA in
-                      Athens. Challenged with an intricate optimization problem,
-                      my team and I collaborated intensely to devise an
-                      effective solution, successfully meeting the competition's
-                      target goals.
-                    </p>
+                    <div id="more-info4" style="display: none">
+                      <p class="timeline-text">
+                        Participated in Google Hash Code 2022 hosted by NTUA in
+                        Athens. Challenged with an intricate optimization
+                        problem, my team and I collaborated intensely to devise
+                        an effective solution, successfully meeting the
+                        competition's target goals.
+                      </p>
+                    </div>
+
+                    <button
+                      onclick="toggleDetails('more-info4')"
+                      id="details-button"
+                    >
+                      Show More
+                    </button>
                   </div>
                 </div>
               </li>
@@ -823,15 +906,27 @@
                     alt="Certificate Thumbnail"
                   />
                   <div class="text-content">
-                    <h4 class="h4 timeline-item-title">Hackathon</h4>
+                    <h4 class="h4 timeline-item-title">
+                      Competition Participant
+                    </h4>
+
+                    <h5 class="h5 timeline-item-subtitle">Hackathon 2022</h5>
 
                     <span>Feb 2022</span>
+                    <div id="more-info5" style="display: none">
+                      <p class="timeline-text">
+                        Participated in Hackathon 2022. Collaborated with team
+                        of experts, conceptualized, designed and developed ideas
+                        for the project.
+                      </p>
+                    </div>
 
-                    <p class="timeline-text">
-                      Participated in Hackathon 2022. Collaborated with team of
-                      experts, conceptualized, designed and developed ideas for
-                      the project.
-                    </p>
+                    <button
+                      onclick="toggleDetails('more-info5')"
+                      id="details-button"
+                    >
+                      Show More
+                    </button>
                   </div>
                 </div>
               </li>

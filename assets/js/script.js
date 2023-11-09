@@ -168,3 +168,19 @@ window.onclick = function (event) {
     modal.classList.remove("show");
   }
 };
+
+//RESUME
+//UNI
+function toggleDetails(id) {
+  var moreInfo = document.getElementById(id);
+  var button = document.querySelector(
+    "button[onclick=\"toggleDetails('" + id + "')\"]"
+  );
+  if (moreInfo.style.display === "none") {
+    moreInfo.style.display = "block";
+    button.textContent = "Show Less";
+  } else {
+    moreInfo.style.display = "none";
+    button.textContent = "Show More";
+  }
+}

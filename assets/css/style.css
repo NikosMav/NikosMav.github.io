@@ -963,6 +963,7 @@ html::-webkit-scrollbar-button {
   color: var(--light-gray);
   font-weight: var(--fw-300);
   line-height: 1.6;
+  margin-bottom: 10px;
 }
 
 .timeline-item {
@@ -983,11 +984,40 @@ html::-webkit-scrollbar-button {
   overflow: hidden; /* Ensures the clipped parts of the image do not overflow */
 }
 
-
 .text-content {
   flex: 1; /* Take up the remaining space */
   margin-left: 15px;
 }
+
+.university-link {
+  color: #fff; /* Change this color to whatever you prefer */
+  text-decoration: none; /* This removes the underline from the link */
+  font-weight: bold; /* Makes the text bold */
+  transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.university-link:hover,
+.university-link:focus {
+  color: #84838a; /* Change this color for the hover effect */
+  text-decoration: underline; /* Adds the underline back on hover for visual feedback */
+}
+
+#details-button {
+  background-color: var(--jet); /* Green background */
+  color: white;
+  padding: 10px 20px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#details-button:hover {
+  background-color: var(--vegas-gold);
+}
+
+
 
 
 
