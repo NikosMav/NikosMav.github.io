@@ -974,19 +974,34 @@ html::-webkit-scrollbar-button {
 
 .timeline-item-content {
   display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  gap: 20px;
+  flex-wrap: wrap; /* Allow wrapping of content on smaller screens */
+  overflow: hidden;
 }
 
+/* Ensure images remain responsive */
 .timeline-item-image {
-  width: 80px;  /* Fixed width */
-  height: 80px; /* Fixed height, can be set to the same as width for a square, or to a different value depending on desired aspect ratio */
-  object-fit: cover; /* Cover the area, potentially clipping the image */
-  border-radius: 4px; /* Optional: Rounds the corners of the image */
-  overflow: hidden; /* Ensures the clipped parts of the image do not overflow */
+  width: 80px;
+  height: auto;
+  flex-shrink: 0; /* Prevent shrinking */
+  border-radius: 10px;
+  object-fit: cover;
 }
 
 .text-content {
   flex: 1; /* Take up the remaining space */
   margin-left: 15px;
+}
+
+.text-content h4,
+.text-content h5,
+.text-content span,
+.text-content p {
+  word-wrap: break-word;
+  max-width: 100%;
+  font-size: 14px;
 }
 
 .university-link {
@@ -1327,13 +1342,36 @@ textarea.form-input::-webkit-resizer { display: none; }
 
 .form-btn:disabled:hover::before { background: var(--bg-gradient-jet); }
 
-
+/* Default styles (for smaller than 450px screens) */
+.avatar-box img {
+  width: 70px; /* Smaller size for very small screens */
+  height: 70px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
 
 
 /*-----------------------------------*\
   #RESPONSIVE
 \*-----------------------------------*/
+
+/* Responsive view for smaller screens */
+@media (max-width: 579px) {
+  .timeline-item-content {
+    flex-direction: column; /* Stack image and text vertically */
+  }
+
+  .timeline-item-image {
+    width: 100px; /* Increase image size for smaller screens */
+    margin-bottom: 10px; /* Add space below image */
+  }
+
+  .text-content {
+    max-width: 100%; /* Ensure text fits within the container */
+  }
+}
 
 /**
  * responsive larger than 450px screen
@@ -1355,6 +1393,20 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .project-img,
   .blog-banner-box { height: auto; }
+
+  .timeline-item-content {
+    text-align: left;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .timeline-item-image {
+    max-width: 150px;
+  }
+
+  .text-content h4 {
+    font-size: 16px;
+  }
 
 }
 
@@ -1445,7 +1497,13 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .avatar-box { border-radius: 30px; }
 
-  .avatar-box img { width: 120px; }
+  .avatar-box img {
+    width: 100px; /* Adjust the size as needed */
+    height: 100px; /* Ensure it's square */
+    border-radius: 10px; /* Makes it circular */
+    object-fit: cover; /* Ensures image covers the area properly */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for better appearance */
+  }
 
   .info-content .name { margin-bottom: 15px; }
 
@@ -1645,6 +1703,18 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .form-btn ion-icon { font-size: 18px; }
 
+  .timeline-item-content {
+    flex-direction: row;
+  }
+
+  .timeline-item-image {
+    max-width: 160px;
+  }
+
+  .text-content h4 {
+    font-size: 18px;
+  }
+
 }
 
 
@@ -1743,6 +1813,18 @@ textarea.form-input::-webkit-resizer { display: none; }
   .form-btn {
     width: max-content;
     margin-left: auto;
+  }
+
+  .timeline-item-content {
+    gap: 25px;
+  }
+
+  .timeline-item-image {
+    max-width: 180px;
+  }
+
+  .text-content h4 {
+    font-size: 20px;
   }
   
 }
@@ -1859,6 +1941,18 @@ textarea.form-input::-webkit-resizer { display: none; }
    */
 
   .blog-banner-box { height: 230px; }
+
+  .timeline-item-content {
+    gap: 30px;
+  }
+
+  .timeline-item-image {
+    max-width: 200px;
+  }
+
+  .text-content h4 {
+    font-size: 22px;
+  }
 
 }
 
@@ -1984,5 +2078,17 @@ textarea.form-input::-webkit-resizer { display: none; }
 	 */
 
   .timeline-text { max-width: 700px; }
+
+  .timeline-item-content {
+    gap: 35px;
+  }
+
+  .timeline-item-image {
+    max-width: 220px;
+  }
+
+  .text-content h4 {
+    font-size: 24px;
+  }
 
 }
