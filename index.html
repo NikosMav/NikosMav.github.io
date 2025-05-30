@@ -193,8 +193,21 @@
             <li class="navbar-item">
               <button class="navbar-link" data-nav-link>Contact</button>
             </li>
+
+            <li class="navbar-item">
+              <button class="theme-toggle" aria-label="Toggle theme">
+                <ion-icon name="moon-outline" class="moon-icon"></ion-icon>
+                <ion-icon name="sunny-outline" class="sun-icon"></ion-icon>
+              </button>
+            </li>
           </ul>
         </nav>
+
+        <!-- Add reCAPTCHA v3 -->
+        <script src="https://www.google.com/recaptcha/api.js?render=6LfkJlArAAAAAHqi_yrki8TnnTfbPrXxXOm1ofGh"></script>
+
+        <!-- Toast container for notifications -->
+        <div id="toast-container" class="toast-container"></div>
 
         <!--
         - #ABOUT
@@ -260,11 +273,23 @@
 
           <!-- CV Section -->
           <section class="cv-section">
-            <h3 class="h3 cv-title">My Curriculum Vitae (old)</h3>
-            <div class="cv-thumbnail">
-              <a id="cvLink">
-                <img src="assets\cv\cv-image.png" alt="CV Thumbnail" />
-              </a>
+            <h3 class="h3 cv-title">My Curriculum Vitae</h3>
+            <div class="cv-container">
+              <div class="cv-thumbnail">
+                <a id="cvLink">
+                  <img src="assets\cv\cv-image.png" alt="CV Thumbnail" />
+                </a>
+              </div>
+              <div class="cv-download">
+                <a
+                  href="assets/cv/Nikolaos-Mavrapidis-New-Resume.pdf"
+                  download
+                  class="download-btn"
+                >
+                  <ion-icon name="download-outline"></ion-icon>
+                  <span>Download CV</span>
+                </a>
+              </div>
             </div>
           </section>
 

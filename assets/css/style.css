@@ -101,6 +101,15 @@
   --transition-1: 0.25s ease;
   --transition-2: 0.5s ease-in-out;
 
+  /* Light theme colors */
+  --light-bg: hsl(0, 0%, 98%);
+  --light-bg-secondary: hsl(0, 0%, 96%);
+  --light-text: hsl(0, 0%, 20%);
+  --light-text-secondary: hsl(0, 0%, 40%);
+  --light-border: hsl(0, 0%, 88%);
+  --light-navbar-bg: hsla(0, 0%, 96%, 0.9);
+  --light-accent: hsl(45, 80%, 45%);
+  --light-icon-bg: hsl(45, 80%, 45%, 0.1);
 }
 
 
@@ -339,7 +348,7 @@ main {
   background: var(--border-gradient-onyx);
   padding: 10px;
   box-shadow: var(--shadow-2);
-  transition: var(--transition-1);
+  transition: all 0.3s ease;
   z-index: 1;
 }
 
@@ -349,15 +358,19 @@ main {
   inset: 1px;
   border-radius: inherit;
   background: var(--bg-gradient-jet);
-  transition: var(--transition-1);
+  transition: all 0.3s ease;
   z-index: -1;
 }
 
 .info_more-btn:hover,
-.info_more-btn:focus { background: var(--bg-gradient-yellow-1); }
+.info_more-btn:focus {
+  background: var(--bg-gradient-yellow-1);
+}
 
 .info_more-btn:hover::before,
-.info_more-btn:focus::before { background: var(--bg-gradient-yellow-2); }
+.info_more-btn:focus::before {
+  background: var(--bg-gradient-yellow-2);
+}
 
 .info_more-btn span { display: none; }
 
@@ -1302,7 +1315,7 @@ textarea.form-input::-webkit-resizer { display: none; }
 .form-btn {
   position: relative;
   width: 100%;
-  background: var(--border-gradient-onyx);
+  background: var(--bg-gradient-onyx);
   color: var(--orange-yellow-crayola);
   display: flex;
   justify-content: center;
@@ -1314,7 +1327,8 @@ textarea.form-input::-webkit-resizer { display: none; }
   text-transform: capitalize;
   box-shadow: var(--shadow-3);
   z-index: 1;
-  transition: var(--transition-1);
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
 }
 
 .form-btn::before {
@@ -1324,23 +1338,36 @@ textarea.form-input::-webkit-resizer { display: none; }
   background: var(--bg-gradient-jet);
   border-radius: inherit;
   z-index: -1;
-  transition: var(--transition-1);
+  transition: all 0.3s ease;
 }
 
-.form-btn ion-icon { font-size: 16px; }
+.form-btn ion-icon { 
+  font-size: 16px; 
+}
 
-.form-btn:hover { background: var(--bg-gradient-yellow-1); }
+.form-btn:hover {
+  background: var(--orange-yellow-crayola);
+  color: var(--smoky-black);
+  border-color: transparent;
+}
 
-.form-btn:hover::before { background: var(--bg-gradient-yellow-2); }
+.form-btn:hover::before {
+  background: var(--bg-gradient-yellow-2);
+}
 
 .form-btn:disabled {
   opacity: 0.7;
   cursor: not-allowed;
 }
 
-.form-btn:disabled:hover { background: var(--border-gradient-onyx); }
+.form-btn:disabled:hover {
+  background: var(--bg-gradient-onyx);
+  color: var(--orange-yellow-crayola);
+}
 
-.form-btn:disabled:hover::before { background: var(--bg-gradient-jet); }
+.form-btn:disabled:hover::before {
+  background: var(--bg-gradient-jet);
+}
 
 /* Default styles (for smaller than 450px screens) */
 .avatar-box img {
@@ -1714,7 +1741,7 @@ textarea.form-input::-webkit-resizer { display: none; }
   .text-content h4 {
     font-size: 18px;
   }
-
+  
 }
 
 
@@ -2091,4 +2118,327 @@ textarea.form-input::-webkit-resizer { display: none; }
     font-size: 24px;
   }
 
+}
+
+/* CV section styles */
+.cv-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.cv-download {
+  margin-top: 15px;
+}
+
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-gradient-onyx);
+  padding: 15px 25px;
+  border-radius: 14px;
+  font-size: var(--fs-6);
+  font-weight: var(--fw-500);
+  text-transform: uppercase;
+  color: var(--white-2);
+  box-shadow: var(--shadow-1);
+  transition: 0.25s ease;
+}
+
+.download-btn:hover {
+  background: var(--bg-gradient-yellow-1);
+  color: var(--orange-yellow-crayola);
+}
+
+.download-btn ion-icon {
+  font-size: 1.25em;
+}
+
+/* Light theme class */
+body.light-theme {
+  /* Background colors */
+  --bg-gradient-onyx: linear-gradient(
+    to bottom right, 
+    hsl(0, 0%, 96%) 3%, 
+    hsl(0, 0%, 92%) 97%
+  );
+  --bg-gradient-jet: linear-gradient(
+    to bottom right, 
+    hsla(0, 0%, 96%, 0.251) 0%, 
+    hsla(0, 0%, 96%, 0) 100%
+  ), hsl(0, 0%, 96%);
+  --smoky-black: var(--light-bg);
+  --eerie-black-1: var(--light-bg-secondary);
+  --eerie-black-2: var(--light-bg-secondary);
+  --jet: var(--light-border);
+
+  /* Text colors */
+  --white-1: var(--light-text);
+  --white-2: var(--light-text);
+  --light-gray: var(--light-text-secondary);
+  --light-gray-70: var(--light-text-secondary);
+
+  /* Accent colors */
+  --orange-yellow-crayola: var(--light-accent);
+  --vegas-gold: hsl(45, 70%, 40%);
+}
+
+/* Navbar specific light theme overrides */
+body.light-theme .navbar {
+  background: var(--light-navbar-bg);
+  backdrop-filter: blur(10px);
+}
+
+body.light-theme .navbar-link {
+  color: var(--light-text);
+}
+
+body.light-theme .navbar-link:hover,
+body.light-theme .navbar-link:focus {
+  color: var(--light-text-secondary);
+}
+
+body.light-theme .navbar-link.active {
+  color: var(--light-accent);
+}
+
+/* Title card light theme override */
+body.light-theme .info-content .title {
+  background: var(--light-icon-bg);
+  color: var(--light-text);
+}
+
+/* Timeline items light theme overrides */
+body.light-theme .timeline-item-title,
+body.light-theme .timeline-item-subtitle {
+  color: var(--light-text);
+}
+
+body.light-theme .timeline-text {
+  color: var(--light-text-secondary);
+}
+
+/* Icon boxes light theme */
+body.light-theme .icon-box {
+  background: var(--light-icon-bg);
+  color: var(--light-accent);
+}
+
+body.light-theme .icon-box::before {
+  background: var(--light-bg);
+}
+
+/* Toast notifications light theme */
+body.light-theme .toast {
+  background: var(--light-bg);
+  color: var(--light-text);
+  border: 1px solid var(--light-border);
+}
+
+/* Links in light theme */
+body.light-theme .university-link {
+  color: var(--light-text);
+}
+
+body.light-theme .university-link:hover,
+body.light-theme .university-link:focus {
+  color: var(--light-accent);
+}
+
+/* Contact form in light theme */
+body.light-theme .form-input {
+  color: var(--light-text);
+  border-color: var(--light-border);
+  background: var(--light-bg);
+}
+
+body.light-theme .form-input:focus {
+  border-color: var(--light-accent);
+}
+
+/* Theme toggle button in light theme */
+body.light-theme .theme-toggle {
+  background: var(--light-icon-bg);
+  border-color: var(--light-border);
+}
+
+body.light-theme .theme-toggle:hover {
+  background: var(--light-accent);
+}
+
+body.light-theme .theme-toggle ion-icon {
+  color: var(--light-accent);
+}
+
+body.light-theme .theme-toggle:hover ion-icon {
+  color: var(--light-bg);
+}
+
+/* Theme toggle styles */
+.theme-toggle {
+  background: var(--bg-gradient-onyx);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--jet);
+}
+
+.theme-toggle:hover {
+  background: var(--bg-gradient-yellow-1);
+}
+
+.theme-toggle ion-icon {
+  font-size: 1.25em;
+  color: var(--orange-yellow-crayola);
+  transition: 0.25s ease;
+}
+
+.theme-toggle .sun-icon {
+  display: none;
+}
+
+body.light-theme .theme-toggle .moon-icon {
+  display: none;
+}
+
+body.light-theme .theme-toggle .sun-icon {
+  display: block;
+}
+
+/* Toast notifications */
+.toast-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.toast {
+  background: var(--bg-gradient-onyx);
+  color: var(--white-2);
+  padding: 15px 25px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: var(--shadow-2);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: slideIn 0.3s ease-out;
+}
+
+.toast.success {
+  border-left: 4px solid #4CAF50;
+}
+
+.toast.error {
+  border-left: 4px solid #f44336;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Button styles for light theme */
+body.light-theme #details-button {
+  background-color: var(--light-accent);
+  color: var(--light-bg);
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+body.light-theme #details-button:hover {
+  background-color: transparent;
+  color: var(--light-accent);
+  border-color: var(--light-accent);
+}
+
+/* Form button light theme styles */
+body.light-theme .form-btn {
+  background: var(--light-accent);
+  color: var(--light-bg);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .form-btn::before {
+  background: none;
+}
+
+body.light-theme .form-btn:hover {
+  background: var(--vegas-gold);
+  color: var(--light-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+body.light-theme .form-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .form-btn:disabled {
+  background: var(--light-border);
+  color: var(--light-text-secondary);
+  transform: none;
+  box-shadow: none;
+}
+
+body.light-theme .form-btn:disabled:hover {
+  background: var(--light-border);
+  color: var(--light-text-secondary);
+  transform: none;
+  box-shadow: none;
+}
+
+/* Light theme overrides for info more button */
+body.light-theme .info_more-btn {
+  background: var(--light-accent);
+  color: var(--light-bg);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .info_more-btn::before {
+  background: none;
+}
+
+body.light-theme .info_more-btn:hover,
+body.light-theme .info_more-btn:focus {
+  background: var(--vegas-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+body.light-theme .info_more-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .info_more-btn span {
+  color: var(--light-bg);
 }

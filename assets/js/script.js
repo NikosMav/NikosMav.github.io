@@ -106,21 +106,105 @@ for (let i = 0; i < filterBtn.length; i++) {
 }
 
 // contact form variables
-const form = document.querySelector("[data-form]");
-const formInputs = document.querySelectorAll("[data-form-input]");
-const formBtn = document.querySelector("[data-form-btn]");
+let form, formInputs, submitBtn;
 
-// add event to all form input field
-for (let i = 0; i < formInputs.length; i++) {
-  formInputs[i].addEventListener("input", function () {
-    // check form validation
-    if (form.checkValidity()) {
-      formBtn.removeAttribute("disabled");
-    } else {
-      formBtn.setAttribute("disabled", "");
+function initializeFormElements() {
+  form = document.querySelector("[data-form]");
+  formInputs = document.querySelectorAll("[data-form-input]");
+  submitBtn = document.querySelector("[data-form-btn]");
+
+  if (!form) return;
+
+  // Basic form validation
+  function validateForm() {
+    let isValid = true;
+    formInputs.forEach((input) => {
+      if (!input.value.trim()) {
+        isValid = false;
+        input.style.borderColor = "var(--bittersweet-shimmer)";
+      } else {
+        input.style.borderColor = "var(--jet)";
+      }
+    });
+    return isValid;
+  }
+
+  // Email validation
+  function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    if (!validateForm()) {
+      showToast("Please fill in all fields", "error");
+      return;
+    }
+
+    const emailInput = form.querySelector('input[type="email"]');
+    if (!validateEmail(emailInput.value)) {
+      showToast("Please enter a valid email address", "error");
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = "<span>Sending...</span>";
+
+    try {
+      // Get reCAPTCHA token
+      const token = await grecaptcha.execute(
+        "6LfkJlArAAAAAHqi_yrki8TnnTfbPrXxXOm1ofGh",
+        {
+          action: "submit",
+        }
+      );
+
+      // Add token to form data
+      const formData = new FormData(form);
+      formData.append("recaptcha_token", token);
+
+      // Submit form to Formspree
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        showToast("Message sent successfully!", "success");
+        form.reset();
+      } else {
+        throw new Error("Failed to send message");
+      }
+    } catch (error) {
+      showToast("Failed to send message. Please try again.", "error");
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = "<span>Send Message</span>";
     }
   });
+
+  // Real-time validation
+  formInputs.forEach((input) => {
+    input.addEventListener("input", () => {
+      if (input.value.trim()) {
+        input.style.borderColor = "var(--jet)";
+      }
+      if (input.type === "email" && input.value.trim()) {
+        input.style.borderColor = validateEmail(input.value)
+          ? "var(--jet)"
+          : "var(--bittersweet-shimmer)";
+      }
+    });
+  });
 }
+
+// Initialize form elements when DOM is loaded
+document.addEventListener("DOMContentLoaded", initializeFormElements);
 
 // page navigation variables
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
@@ -183,4 +267,43 @@ function toggleDetails(id) {
     moreInfo.style.display = "none";
     button.textContent = "Show More";
   }
+}
+
+// Theme toggling
+const themeToggle = document.querySelector(".theme-toggle");
+const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+// Check for saved theme preference or use system preference
+const currentTheme =
+  localStorage.getItem("theme") ||
+  (prefersDarkScheme.matches ? "dark" : "light");
+if (currentTheme === "light") {
+  document.body.classList.add("light-theme");
+}
+
+themeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("light-theme");
+  const theme = document.body.classList.contains("light-theme")
+    ? "light"
+    : "dark";
+  localStorage.setItem("theme", theme);
+});
+
+// Toast notifications
+function showToast(message, type = "success") {
+  const toast = document.createElement("div");
+  toast.className = `toast ${type}`;
+  toast.innerHTML = `
+    <ion-icon name="${
+      type === "success" ? "checkmark-circle" : "alert-circle"
+    }"></ion-icon>
+    <span>${message}</span>
+  `;
+
+  document.querySelector(".toast-container").appendChild(toast);
+
+  setTimeout(() => {
+    toast.style.animation = "slideOut 0.3s ease-out forwards";
+    setTimeout(() => toast.remove(), 300);
+  }, 3000);
 }
