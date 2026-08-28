@@ -61,6 +61,62 @@ export const projects = [
   },
 ];
 
+// Hands-on retrieval and applied-AI R&D — the practical work behind the move
+// into AI engineering. Metrics are the reported evaluation figures from each
+// project's own reproducible harness.
+export const retrieval = [
+  {
+    id: "R1",
+    title: "Netflix Catalog Search",
+    eyebrow: "Retrieval R&D · Lexical → semantic → hybrid → rerank",
+    description:
+      "An offline catalog search that puts lexical, dense, hybrid, and two-stage retrieval side by side over the same corpus and measures each one.",
+    detail:
+      "BM25 and TF-IDF for exact titles, a MiniLM bi-encoder for paraphrase, Reciprocal Rank Fusion to combine them, and an MS MARCO cross-encoder to rerank the top candidates.",
+    metrics: [
+      ["nDCG@10", "0.72"],
+      ["Recall@10", "0.78"],
+      ["MRR", "0.76"],
+    ],
+    note: "Best config (hybrid + rerank) vs. 0.56 Recall@10 for BM25 alone.",
+    tags: ["BM25", "Dense · MiniLM", "RRF", "Cross-encoder"],
+    href: "https://github.com/NikosMav/netflix-catalog-search",
+    linkLabel: "View repository",
+  },
+  {
+    id: "R2",
+    title: "News Evidence Retrieval",
+    eyebrow: "Retrieval R&D · Passage retrieval & reproducible eval",
+    description:
+      "Hybrid passage retrieval that surfaces supporting evidence for a claim over a news corpus — an evidence finder, deliberately not a fact-checker.",
+    detail:
+      "Sparse TF-IDF and a MiniLM dense retriever fused with RRF over ~4k articles chunked into overlapping passages, evaluated on 300 title-to-body queries.",
+    metrics: [
+      ["MRR", "0.84"],
+      ["Hit@1", "0.78"],
+      ["nDCG@5", "0.63"],
+    ],
+    note: "Hybrid retriever; documented classification baseline kept separate.",
+    tags: ["TF-IDF", "Dense · MiniLM", "RRF", "Passage retrieval"],
+    href: "https://github.com/NikosMav/news-evidence-retrieval",
+    linkLabel: "View repository",
+  },
+];
+
+// Smaller applied ML / optimization explorations shown as compact links.
+export const explorations = [
+  {
+    title: "Maritime Fuel-Mix Optimization",
+    blurb: "FuelEU & EU ETS scenario optimization prototype (operations research, SciPy).",
+    href: "https://github.com/NikosMav/maritime-optimization-case-study",
+  },
+  {
+    title: "Image Analysis with PCA",
+    blurb: "Dimensionality reduction and classification — PCA, k-NN, and NMF on image data.",
+    href: "https://github.com/NikosMav/Image-Analysis-with-PCA",
+  },
+];
+
 export const experience = [
   {
     period: "Oct 2025—Present",
@@ -74,16 +130,17 @@ export const experience = [
   {
     period: "Nov 2025—Present",
     role: "Test Automation Engineer",
-    context: "Industrial software",
+    context: "SoftCom International · industrial software client",
     points: [
-      "Own and modernise UI and REST automation across Python, Robot Framework, reusable test libraries, dashboards, and result publishing.",
-      "Stabilise nightly CI and investigate high-impact memory and resource regressions from reproduction through validation and regression coverage.",
+      "Own and modernise UI and REST automation across Python, Robot Framework, reusable keyword libraries, dashboards, and result publishing.",
+      "Stabilise nightly CI and own high-impact defects — including memory leaks — from reproduction through validation and regression coverage.",
+      "Collaborate on-site with client developers and align defect evidence and delivery with release schedules.",
     ],
   },
   {
     period: "Jun 2025—Nov 2025",
     role: "Software Engineer · Java",
-    context: "Industrial software",
+    context: "SoftCom International · industrial software client",
     points: [
       "Delivered a product extension end-to-end across backend and UI, then modernised legacy modules through careful reverse-engineering.",
       "Resolved high-priority defects and maintained delivery tooling across Jenkins and Artifactory.",
@@ -92,7 +149,7 @@ export const experience = [
   {
     period: "Dec 2023—Jun 2025",
     role: "Software Engineer · Embedded C/C++",
-    context: "Telecom systems",
+    context: "SoftCom International · telecom client",
     points: [
       "Shipped a hitless software upgrade path that reduced planned service interruption from hundreds of milliseconds to zero.",
       "Closed high-priority defects and completed the documentation, knowledge transfer, and handover for the work.",
@@ -102,8 +159,14 @@ export const experience = [
 
 export const capabilities = [
   {
-    title: "Applied AI",
-    items: ["Python", "LLM applications & RAG", "Embeddings", "Vector search", "scikit-learn"],
+    title: "Applied AI & retrieval",
+    items: [
+      "LLM applications & RAG",
+      "Embeddings & vector search",
+      "Hybrid retrieval (RRF)",
+      "Cross-encoder reranking",
+      "Recommenders & scikit-learn",
+    ],
   },
   {
     title: "Quality & automation",
@@ -115,13 +178,14 @@ export const capabilities = [
   },
   {
     title: "Delivery & data",
-    items: ["Jenkins / GitLab / Azure", "Docker & Kubernetes", "PostgreSQL", "GCP", "AWS"],
+    items: ["Jenkins / GitLab / Azure", "Docker & Kubernetes", "PostgreSQL", "GCP / AWS", "Security foundations"],
   },
 ];
 
 export const learning = [
   ["AWS Certified AI Practitioner", "In progress"],
-  ["LLMs, retrieval, embeddings & recommenders", "Ongoing practice"],
-  ["IBM & Cisco cybersecurity pathways", "Ongoing · core modules complete"],
-  ["Cloud-native DevOps & GitOps", "Ongoing"],
+  ["LLMs, embeddings, vector search & RAG", "Ongoing practice"],
+  ["IBM Cybersecurity Analyst", "In progress · ~halfway"],
+  ["Cisco Junior Cybersecurity Analyst", "In progress · core modules complete"],
+  ["DevOps with AI (Decoding DevOps)", "In progress"],
 ];

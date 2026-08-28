@@ -10,10 +10,11 @@ import {
   MapPin,
   X,
 } from "@phosphor-icons/react";
-import { capabilities, experience, learning, projects } from "./data/portfolio";
+import { capabilities, experience, explorations, learning, projects, retrieval } from "./data/portfolio";
 
 const navItems = [
   ["Work", "work"],
+  ["AI R&D", "ai-rnd"],
   ["Experience", "experience"],
   ["Direction", "direction"],
   ["About", "about"],
@@ -69,7 +70,7 @@ function Hero() {
   return (
     <section className="hero page-shell" aria-labelledby="hero-title">
       <div className="hero-copy">
-        <p className="kicker">Software engineer · Founding engineer</p>
+        <p className="kicker">Software engineer · Moving into applied AI</p>
         <h1 id="hero-title">
           Nikos
           <br />
@@ -77,7 +78,7 @@ function Hero() {
         </h1>
         <p className="hero-statement">
           I build reliable systems and <em>AI products</em>—from embedded telecom and industrial software to
-          retrieval-first product engineering.
+          <em> retrieval-first</em> engineering, with security as the edge.
         </p>
         <div className="hero-roles" aria-label="Current roles">
           <div>
@@ -86,9 +87,13 @@ function Hero() {
           </div>
           <div>
             <strong>Test Automation Engineer</strong>
-            <span>Industrial software · Nov 2025—Present</span>
+            <span>SoftCom International · Nov 2025—Present</span>
           </div>
         </div>
+        <p className="hero-transition">
+          <span>Since Jul 2026</span> deliberately transitioning into applied AI &amp; retrieval engineering—
+          upskilling, certifying, and building it into hands-on projects.
+        </p>
         <div className="hero-actions">
           <a className="button button-primary" href="#work">
             View selected work <ArrowDown aria-hidden="true" />
@@ -172,12 +177,66 @@ function Work() {
   );
 }
 
+function AiRnd() {
+  return (
+    <section className="section ai-rnd page-shell" id="ai-rnd" aria-labelledby="ai-rnd-title">
+      <div className="section-heading">
+        <p className="section-number">02</p>
+        <div>
+          <p className="kicker">Retrieval &amp; AI R&amp;D</p>
+          <h2 id="ai-rnd-title">The retrieval work behind the move.</h2>
+        </div>
+        <p>Hands-on retrieval systems with reproducible evaluation—lexical, dense, hybrid, and reranking, measured rather than asserted.</p>
+      </div>
+      <div className="rnd-list">
+        {retrieval.map((item) => (
+          <article className="rnd-card" key={item.id}>
+            <div className="rnd-card-head">
+              <p className="eyebrow">{item.eyebrow}</p>
+              <h3>{item.title}</h3>
+            </div>
+            <p className="rnd-description">{item.description}</p>
+            <p className="rnd-detail">{item.detail}</p>
+            <dl className="rnd-metrics" aria-label={`${item.title} evaluation metrics`}>
+              {item.metrics.map(([label, value]) => (
+                <div key={label}>
+                  <dt>{label}</dt>
+                  <dd>{value}</dd>
+                </div>
+              ))}
+            </dl>
+            <p className="rnd-note">{item.note}</p>
+            <ul className="tag-list" aria-label={`${item.title} methods`}>
+              {item.tags.map((tag) => <li key={tag}>{tag}</li>)}
+            </ul>
+            <ExternalLink className="project-link" href={item.href}>
+              {item.linkLabel} <ArrowUpRight aria-hidden="true" />
+            </ExternalLink>
+          </article>
+        ))}
+      </div>
+      <div className="rnd-more">
+        <span>More applied ML &amp; optimization</span>
+        <div className="rnd-more-list">
+          {explorations.map((item) => (
+            <ExternalLink className="rnd-more-item" href={item.href} key={item.title}>
+              <strong>{item.title}</strong>
+              <p>{item.blurb}</p>
+              <span className="rnd-more-link">View repository <ArrowUpRight aria-hidden="true" /></span>
+            </ExternalLink>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Experience() {
   return (
     <section className="section section-ink" id="experience" aria-labelledby="experience-title">
       <div className="page-shell">
         <div className="section-heading section-heading-light">
-          <p className="section-number">02</p>
+          <p className="section-number">03</p>
           <div>
             <p className="kicker">Experience</p>
             <h2 id="experience-title">A stable progression across hard problems.</h2>
@@ -208,12 +267,13 @@ function Direction() {
     <section className="section direction" id="direction" aria-labelledby="direction-title">
       <div className="page-shell direction-grid">
         <div className="direction-intro">
-          <p className="section-number">03</p>
+          <p className="section-number">04</p>
           <p className="kicker">Direction</p>
-          <h2 id="direction-title">The next chapter is applied AI.</h2>
+          <h2 id="direction-title">Toward secure-AI engineering.</h2>
           <p>
-            My goal is a deliberate shift into AI engineering: retrieval, evaluation, intelligent product workflows, and
-            the infrastructure that makes them dependable. Lope is where that shift is already becoming practical work.
+            My goal is a single identity: a secure-AI &amp; retrieval engineer. AI at the core—retrieval, evaluation,
+            embeddings, and LLM/RAG systems—with security as the edge: provenance, access control, and safe integration.
+            Lope and my retrieval R&amp;D are where that shift is already becoming practical work.
           </p>
         </div>
         <div className="capability-grid">
@@ -249,7 +309,7 @@ function About() {
   return (
     <section className="section about page-shell" id="about" aria-labelledby="about-title">
       <div className="section-heading">
-        <p className="section-number">04</p>
+        <p className="section-number">05</p>
         <div>
           <p className="kicker">About</p>
           <h2 id="about-title">Ownership from investigation to handover.</h2>
@@ -307,6 +367,7 @@ export default function App() {
       <main id="main-content">
         <Hero />
         <Work />
+        <AiRnd />
         <Experience />
         <Direction />
         <About />
