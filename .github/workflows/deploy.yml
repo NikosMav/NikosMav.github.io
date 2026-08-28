@@ -2,45 +2,37 @@ name: Deploy Vite site to GitHub Pages
 
 on:
   push:
-    branches: [main] # adjust if your default branch is different
+    branches: [main]
   workflow_dispatch:
 
-jobs:
-  deploy: # ← job name changed (can be anything)
-    runs-on: ubuntu-latest
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
-    # 👇 **THIS** block makes Pages happy
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
-    # permissions GitHub Pages needs
-    permissions:
-      contents: read # optional but recommended
-      pages: write
-      id-token: write
-
-    # optional but recommended: only one deploy at a time
-    concurrency:
-      group: "pages"
-      cancel-in-progress: true
-
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
-
       - run: npm ci
+      - run: npm run lint
       - run: npm run build
-
-      # bundles ./dist into an artifact automatically named "github-pages"
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
-
-      # 👇 give this step an id so we can grab page_url
       - id: deployment
         uses: actions/deploy-pages@v4
