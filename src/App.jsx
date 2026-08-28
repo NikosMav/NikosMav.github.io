@@ -109,7 +109,6 @@ function Hero() {
         </div>
       </div>
       <figure className="portrait-wrap">
-        <span className="portrait-index">01 / 04</span>
         <picture>
           <source media="(max-width: 760px)" srcSet="/assets/images/profile-portrait.webp" />
           <img

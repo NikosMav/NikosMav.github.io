@@ -355,15 +355,6 @@ dl {
   text-transform: uppercase;
 }
 
-.portrait-index {
-  position: absolute;
-  top: -38px;
-  right: 0;
-  color: var(--muted);
-  font-size: 11px;
-  letter-spacing: 0.12em;
-}
-
 .section {
   padding-block: clamp(90px, 10vw, 150px);
 }
