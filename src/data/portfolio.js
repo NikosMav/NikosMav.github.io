@@ -2,14 +2,14 @@ export const projects = [
   {
     id: "01",
     title: "Lope",
-    eyebrow: "Startup · Founding Engineer · 2025—Present",
+    eyebrow: "Startup · Founding Engineer · 2025—2026",
     description:
-      "A recruiter-first AI workspace that turns role briefs and candidate evidence into ranked, explainable shortlists.",
+      "A recruiter-first AI workspace that turns role briefs and candidate evidence into ranked, explainable shortlists — run in production with recruiting agencies, with 1,500+ interviews and ~800 AI-sourced candidates flowing through it.",
     contribution:
-      "Building the product and the systems behind search, enrichment, shortlists, and reliable delivery.",
+      "Built the recruiter workspace, the row-level-security access model, interview collaboration, and company intelligence; improved search ranking quality and owned testing and production operations.",
     tags: ["Applied AI", "Retrieval", "Product engineering"],
-    href: "https://www.withlope.com/",
-    linkLabel: "Visit Lope",
+    href: "https://nikosmav.github.io/lope-case-study/",
+    linkLabel: "Read case study",
     image: "/assets/projects/lope-logo.svg",
     imageAlt: "Lope logo",
     theme: "lope",
@@ -119,12 +119,12 @@ export const explorations = [
 
 export const experience = [
   {
-    period: "Oct 2025—Present",
+    period: "Oct 2025—Sep 2026",
     role: "Founding Engineer",
     context: "Lope · concurrent startup work",
     points: [
-      "Building an AI product for recruiter search, candidate enrichment, evidence-backed ranking, and shortlist workflows.",
-      "Working across product decisions, application engineering, retrieval systems, and production delivery.",
+      "Built an AI product for recruiter search, candidate enrichment, evidence-backed ranking, and shortlist workflows, used in production by recruiting agencies.",
+      "Worked across product decisions, application engineering, retrieval systems, and production delivery; 98.7% enrichment success over ~3,000 profiles and 1,272 passing tests at handover.",
     ],
   },
   {

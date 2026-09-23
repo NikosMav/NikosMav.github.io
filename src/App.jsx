@@ -80,10 +80,10 @@ function Hero() {
           I build reliable systems and <em>AI products</em>—from embedded telecom and industrial software to
           <em> retrieval-first</em> engineering, with security as the edge.
         </p>
-        <div className="hero-roles" aria-label="Current roles">
+        <div className="hero-roles" aria-label="Recent roles">
           <div>
             <strong>Founding Engineer</strong>
-            <span>Lope · Oct 2025—Present</span>
+            <span>Lope · Oct 2025—Sep 2026</span>
           </div>
           <div>
             <strong>Test Automation Engineer</strong>
@@ -272,7 +272,7 @@ function Direction() {
           <p>
             My goal is a single identity: a secure-AI &amp; retrieval engineer. AI at the core—retrieval, evaluation,
             embeddings, and LLM/RAG systems—with security as the edge: provenance, access control, and safe integration.
-            Lope and my retrieval R&amp;D are where that shift is already becoming practical work.
+            Lope and my retrieval R&amp;D are where that shift became practical work.
           </p>
         </div>
         <div className="capability-grid">
