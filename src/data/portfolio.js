@@ -6,7 +6,7 @@ export const projects = [
     description:
       "A recruiter-first AI workspace that turns role briefs and candidate evidence into ranked, explainable shortlists — run in production with recruiting agencies, with 1,500+ interviews and ~800 AI-sourced candidates flowing through it.",
     contribution:
-      "Built the recruiter workspace, the row-level-security access model, interview collaboration, and company intelligence; improved search ranking quality and owned testing and production operations.",
+      "Worked across the whole platform — product, front end, back end, AI search, and infrastructure — as the most active contributor in both code repositories: the recruiter workspace, the row-level-security access model, quote-verified LLM skill matching in the ranking engine, and immutable releases on two production VMs.",
     tags: ["Applied AI", "Retrieval", "Product engineering"],
     href: "https://nikosmav.github.io/lope-case-study/",
     linkLabel: "Read case study",
