@@ -2,7 +2,7 @@ export const projects = [
   {
     id: "01",
     title: "Lope",
-    eyebrow: "Startup · Founding Engineer · 2025—2026",
+    eyebrow: "Startup · Co-founder · 2025—2026",
     description:
       "A recruiter-first AI workspace that turns role briefs and candidate evidence into ranked, explainable shortlists — run in production with recruiting agencies, with 1,500+ interviews and ~800 AI-sourced candidates flowing through it.",
     contribution:
@@ -120,7 +120,7 @@ export const explorations = [
 export const experience = [
   {
     period: "Oct 2025—Sep 2026",
-    role: "Founding Engineer",
+    role: "Co-founder",
     context: "Lope · concurrent startup work",
     points: [
       "Built an AI product for recruiter search, candidate enrichment, evidence-backed ranking, and shortlist workflows, used in production by recruiting agencies.",

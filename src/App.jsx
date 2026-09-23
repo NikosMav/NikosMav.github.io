@@ -82,7 +82,7 @@ function Hero() {
         </p>
         <div className="hero-roles" aria-label="Recent roles">
           <div>
-            <strong>Founding Engineer</strong>
+            <strong>Co-founder</strong>
             <span>Lope · Oct 2025—Sep 2026</span>
           </div>
           <div>
