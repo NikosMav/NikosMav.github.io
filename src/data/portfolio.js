@@ -68,17 +68,17 @@ export const projects = [
   },
 ];
 
-// Metrics are the reported figures from each project's evaluation harness.
+// Headline metrics from each repository's committed evaluation results.
 export const retrieval = [
   {
     id: "R1",
     title: "Netflix Catalog Search",
-    eyebrow: "Lexical · dense · hybrid · rerank",
-    description: "Lexical, dense, hybrid, and reranked retrieval compared over one catalog.",
+    eyebrow: "BM25 · dense · hybrid · rerank",
+    description: "Six retrieval methods compared on 28 labelled catalog queries; best is hybrid RRF with cross-encoder reranking.",
     metrics: [
-      ["nDCG@10", "0.72"],
-      ["Recall@10", "0.78"],
-      ["MRR", "0.76"],
+      ["nDCG@10", "0.719"],
+      ["Recall@10", "0.782"],
+      ["MRR", "0.758"],
     ],
     tags: ["BM25", "MiniLM", "RRF", "Cross-encoder"],
     href: "https://github.com/NikosMav/netflix-catalog-search",
@@ -86,32 +86,27 @@ export const retrieval = [
   {
     id: "R2",
     title: "News Evidence Retrieval",
-    eyebrow: "Hybrid passage retrieval",
-    description: "Finds passages that support a claim across ~4,000 news articles.",
+    eyebrow: "Claim retrieval · SciFact (BEIR)",
+    description: "Ranks scientific abstracts for a claim; hybrid RRF beats the published BEIR BM25 baseline of 0.665.",
     metrics: [
-      ["MRR", "0.84"],
-      ["Hit@1", "0.78"],
-      ["nDCG@5", "0.63"],
+      ["nDCG@10", "0.719"],
+      ["Recall@100", "0.955"],
+      ["MRR", "0.687"],
     ],
-    tags: ["TF-IDF", "MiniLM", "RRF"],
+    tags: ["BM25", "MiniLM", "RRF", "BEIR"],
     href: "https://github.com/NikosMav/news-evidence-retrieval",
   },
 ];
 
 export const explorations = [
   {
-    title: "Maritime Fuel-Mix Optimization",
-    blurb: "FuelEU and EU ETS scenario optimisation with SciPy.",
+    title: "Maritime Fuel Optimization",
+    blurb: "Fuel, carbon, and FuelEU / EU ETS cost optimisation with SciPy.",
     href: "https://github.com/NikosMav/maritime-optimization-case-study",
   },
   {
-    title: "Image Analysis with PCA",
-    blurb: "PCA, k-NN, and NMF on image data.",
-    href: "https://github.com/NikosMav/Image-Analysis-with-PCA",
-  },
-  {
     title: "GitHub Scraper",
-    blurb: "Python CLI for public repository data.",
+    blurb: "Python CLI that builds a Markdown CV from a GitHub profile.",
     href: "https://github.com/NikosMav/github-scraper",
   },
 ];
