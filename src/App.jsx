@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowDown,
   ArrowRight,
@@ -24,12 +24,41 @@ function ExternalLink({ href, children, className = "" }) {
   return (
     <a className={className} href={href} target="_blank" rel="noreferrer">
       {children}
+      <span className="visually-hidden"> (opens in a new tab)</span>
     </a>
   );
 }
 
+// Tracks which section is currently in view so the navigation can mark it.
+function useActiveSection(ids) {
+  const [active, setActive] = useState("");
+
+  useEffect(() => {
+    const sections = ids.map((id) => document.getElementById(id)).filter(Boolean);
+    if (!sections.length || !("IntersectionObserver" in window)) return undefined;
+
+    const visible = new Map();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => visible.set(entry.target.id, entry.isIntersecting));
+        setActive(ids.find((id) => visible.get(id)) ?? "");
+      },
+      { rootMargin: "-45% 0px -50% 0px" },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, [ids]);
+
+  return active;
+}
+
+const sectionIds = navItems.map(([, id]) => id);
+
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuButton = useRef(null);
+  const activeSection = useActiveSection(sectionIds);
 
   useEffect(() => {
     const closeOnResize = () => window.innerWidth > 760 && setMenuOpen(false);
@@ -37,12 +66,30 @@ function Header() {
     return () => window.removeEventListener("resize", closeOnResize);
   }, []);
 
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+
+    const closeOnEscape = (event) => {
+      if (event.key !== "Escape") return;
+      setMenuOpen(false);
+      menuButton.current?.focus();
+    };
+
+    document.body.classList.add("menu-open");
+    document.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.body.classList.remove("menu-open");
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [menuOpen]);
+
   return (
     <header className="site-header">
       <a className="monogram" href="#top" aria-label="Back to top">
         NM<span>.</span>
       </a>
       <button
+        ref={menuButton}
         className="menu-button"
         type="button"
         aria-expanded={menuOpen}
@@ -54,7 +101,12 @@ function Header() {
       </button>
       <nav id="site-navigation" className={menuOpen ? "nav-open" : ""} aria-label="Primary navigation">
         {navItems.map(([label, id]) => (
-          <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)}>
+          <a
+            key={id}
+            href={`#${id}`}
+            aria-current={activeSection === id ? "location" : undefined}
+            onClick={() => setMenuOpen(false)}
+          >
             {label}
           </a>
         ))}
@@ -345,7 +397,7 @@ function Footer() {
           <ArrowUpRight aria-hidden="true" />
         </a>
         <div className="footer-bottom">
-          <span>© {new Date().getFullYear()} Nikos Mavrapidis</span>
+          <span suppressHydrationWarning>© {new Date().getFullYear()} Nikos Mavrapidis</span>
           <div>
             <ExternalLink href="https://github.com/NikosMav">GitHub</ExternalLink>
             <ExternalLink href="https://www.linkedin.com/in/nikolaos-mavrapidis">LinkedIn</ExternalLink>

@@ -14,6 +14,8 @@ An editorial single-page portfolio covering selected product work, role progress
 
 ## Local development
 
+Requires Node.js 20.19+ (CI uses Node 22).
+
 ```bash
 npm install
 npm run dev
@@ -26,6 +28,8 @@ npm run build
 npm run preview
 ```
 
+`npm run build` bundles the client, then renders the app on the server and injects the HTML into `dist/index.html` (see [`scripts/prerender.mjs`](scripts/prerender.mjs)), so the page ships real content before JavaScript loads and React hydrates it.
+
 ## Quality checks
 
 ```bash
@@ -35,4 +39,4 @@ npm run build
 
 ## Deployment
 
-Pushes to `main` are linted, built, and deployed automatically to GitHub Pages through [the deployment workflow](.github/workflows/deploy.yml).
+Pushes to `main` are linted, built, and deployed automatically to GitHub Pages through [the deployment workflow](.github/workflows/deploy.yml). Pull requests run the same lint and build checks without deploying.
