@@ -986,6 +986,142 @@ footer {
   transform: translate(3px, -3px);
 }
 
+/* Education & credentials */
+.credentials-cv > p {
+  margin: 10px 0 22px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.credentials-cv .button svg {
+  width: 18px;
+  height: 18px;
+}
+
+.credentials-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(40px, 6vw, 90px);
+  margin-top: 48px;
+}
+
+.credentials-column {
+  display: grid;
+  align-content: start;
+  gap: 48px;
+}
+
+.education-card {
+  padding: 32px;
+  border: 1px solid var(--line);
+  background: var(--white);
+}
+
+.education-card .eyebrow {
+  margin-bottom: 12px;
+}
+
+.education-card h3 {
+  margin-bottom: 6px;
+  font-family: var(--display);
+  font-size: clamp(28px, 2.8vw, 38px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.education-card span {
+  display: block;
+  margin-bottom: 16px;
+  color: var(--blue);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.education-card p {
+  margin-bottom: 22px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.credential-block h3 {
+  margin-bottom: 8px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--display);
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.credential-rows {
+  margin-bottom: 0;
+}
+
+.credential-rows > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding-block: 13px;
+  border-bottom: 1px solid var(--line);
+}
+
+.credential-rows dt {
+  font-weight: 600;
+}
+
+.credential-rows dd {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  text-align: right;
+}
+
+.credential-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.credential-list li {
+  padding-block: 15px;
+  border-bottom: 1px solid var(--line);
+}
+
+.credential-list strong {
+  font-weight: 600;
+}
+
+.credential-list a {
+  display: inline-flex;
+  gap: 6px;
+  align-items: baseline;
+}
+
+.credential-list a:hover {
+  color: var(--blue);
+}
+
+.credential-list a svg {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  transform: translateY(2px);
+  color: var(--blue);
+}
+
+.credential-list span {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.credential-list p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
 @media (max-width: 1050px) {
   .hero {
     grid-template-columns: minmax(0, 1fr) minmax(310px, 0.72fr);
@@ -1087,7 +1223,8 @@ footer {
     grid-template-columns: 42px 1fr;
   }
 
-  .section-heading > p:last-child {
+  .section-heading > p:last-child,
+  .section-heading > .credentials-cv {
     grid-column: 2;
     max-width: 520px;
   }
@@ -1120,7 +1257,8 @@ footer {
   }
 
   .direction-grid,
-  .about-grid {
+  .about-grid,
+  .credentials-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1287,6 +1425,19 @@ footer {
 
   .learning-block dl > div {
     display: block;
+  }
+
+  .education-card {
+    padding: 24px;
+  }
+
+  .credential-rows > div {
+    display: block;
+  }
+
+  .credential-rows dd {
+    margin-top: 2px;
+    text-align: left;
   }
 
   .learning-block dd {

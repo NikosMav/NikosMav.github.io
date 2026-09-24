@@ -4,18 +4,32 @@ import {
   ArrowRight,
   ArrowUpRight,
   EnvelopeSimple,
+  FileText,
   GithubLogo,
   LinkedinLogo,
   List,
   MapPin,
   X,
 } from "@phosphor-icons/react";
-import { capabilities, experience, explorations, learning, projects, retrieval } from "./data/portfolio";
+import {
+  capabilities,
+  certifications,
+  community,
+  education,
+  experience,
+  explorations,
+  languages,
+  learning,
+  profile,
+  projects,
+  retrieval,
+} from "./data/portfolio";
 
 const navItems = [
   ["Work", "work"],
   ["AI R&D", "ai-rnd"],
   ["Experience", "experience"],
+  ["Credentials", "credentials"],
   ["Direction", "direction"],
   ["About", "about"],
 ];
@@ -158,6 +172,7 @@ function Hero() {
           <span><MapPin aria-hidden="true" /> Athens, Greece</span>
           <ExternalLink href="https://github.com/NikosMav"><GithubLogo aria-hidden="true" /> GitHub</ExternalLink>
           <ExternalLink href="https://www.linkedin.com/in/nikolaos-mavrapidis"><LinkedinLogo aria-hidden="true" /> LinkedIn</ExternalLink>
+          <ExternalLink href={profile.cv}><FileText aria-hidden="true" /> CV (PDF)</ExternalLink>
         </div>
       </div>
       <figure className="portrait-wrap">
@@ -313,12 +328,89 @@ function Experience() {
   );
 }
 
+function Credentials() {
+  return (
+    <section className="section credentials page-shell" id="credentials" aria-labelledby="credentials-title">
+      <div className="section-heading">
+        <p className="section-number">04</p>
+        <div>
+          <p className="kicker">Education &amp; credentials</p>
+          <h2 id="credentials-title">The foundations behind the work.</h2>
+        </div>
+        <div className="credentials-cv">
+          <p>Education, certifications, and community work. The full CV has everything on one page.</p>
+          <ExternalLink className="button button-primary" href={profile.cv}>
+            Download CV <FileText aria-hidden="true" />
+          </ExternalLink>
+        </div>
+      </div>
+      <div className="credentials-grid">
+        <div className="credentials-column">
+          {education.map((item) => (
+            <article className="education-card" key={item.degree}>
+              <p className="eyebrow">Education · {item.period}</p>
+              <h3>{item.degree}</h3>
+              <span>{item.school}</span>
+              <p>{item.detail}</p>
+              <ExternalLink className="project-link" href={item.href}>
+                {item.linkLabel} <ArrowUpRight aria-hidden="true" />
+              </ExternalLink>
+            </article>
+          ))}
+          <div className="credential-block">
+            <h3>Languages</h3>
+            <dl className="credential-rows">
+              {languages.map(([language, level]) => (
+                <div key={language}>
+                  <dt>{language}</dt>
+                  <dd>{level}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </div>
+        <div className="credentials-column">
+          <div className="credential-block">
+            <h3>Certifications</h3>
+            <ul className="credential-list">
+              {certifications.map((item) => (
+                <li key={item.title}>
+                  {item.href ? (
+                    <ExternalLink href={item.href}>
+                      <strong>{item.title}</strong> <ArrowUpRight aria-hidden="true" />
+                    </ExternalLink>
+                  ) : (
+                    <strong>{item.title}</strong>
+                  )}
+                  <span>{[item.issuer, item.date].filter(Boolean).join(" · ")}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="credential-block">
+            <h3>Competitions &amp; community</h3>
+            <ul className="credential-list">
+              {community.map((item) => (
+                <li key={item.title}>
+                  <strong>{item.title}</strong>
+                  <span>{item.org} · {item.date}</span>
+                  <p>{item.detail}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Direction() {
   return (
     <section className="section direction" id="direction" aria-labelledby="direction-title">
       <div className="page-shell direction-grid">
         <div className="direction-intro">
-          <p className="section-number">04</p>
+          <p className="section-number">05</p>
           <p className="kicker">Direction</p>
           <h2 id="direction-title">Toward secure-AI engineering.</h2>
           <p>
@@ -360,7 +452,7 @@ function About() {
   return (
     <section className="section about page-shell" id="about" aria-labelledby="about-title">
       <div className="section-heading">
-        <p className="section-number">05</p>
+        <p className="section-number">06</p>
         <div>
           <p className="kicker">About</p>
           <h2 id="about-title">Ownership from investigation to handover.</h2>
@@ -369,7 +461,8 @@ function About() {
       </div>
       <div className="about-grid">
         <p>
-          I am a software engineer based in Athens with an MSc in Computer Science. My path has moved from embedded
+          I am a software engineer based in Athens with a BSc in Informatics &amp; Telecommunications from the
+          University of Athens. My path has moved from embedded
           telecom to Java product development, test automation, and now applied AI. Across each role, the common thread
           is ownership: understand the system, reduce uncertainty, ship the change, and leave it stronger.
         </p>
@@ -401,6 +494,7 @@ function Footer() {
           <div>
             <ExternalLink href="https://github.com/NikosMav">GitHub</ExternalLink>
             <ExternalLink href="https://www.linkedin.com/in/nikolaos-mavrapidis">LinkedIn</ExternalLink>
+            <ExternalLink href={profile.cv}>CV</ExternalLink>
             <a href="#top">Back to top ↑</a>
           </div>
         </div>
@@ -420,6 +514,7 @@ export default function App() {
         <Work />
         <AiRnd />
         <Experience />
+        <Credentials />
         <Direction />
         <About />
       </main>

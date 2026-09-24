@@ -30,6 +30,15 @@ npm run preview
 
 `npm run build` bundles the client, then renders the app on the server and injects the HTML into `dist/index.html` (see [`scripts/prerender.mjs`](scripts/prerender.mjs)), so the page ships real content before JavaScript loads and React hydrates it.
 
+## CV
+
+The downloadable CV (`public/assets/cv/Nikos-Mavrapidis-CV.pdf`) is generated from the same data as the site in [`src/data/portfolio.js`](src/data/portfolio.js). After editing that data, regenerate and commit the PDF:
+
+```bash
+npx playwright install chromium   # once, or set CHROMIUM_PATH to an installed Chrome
+npm run cv
+```
+
 ## Quality checks
 
 ```bash

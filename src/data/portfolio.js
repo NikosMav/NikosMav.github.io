@@ -1,3 +1,17 @@
+export const profile = {
+  name: "Nikos Mavrapidis",
+  legalName: "Nikolaos Mavrapidis",
+  title: "Software Engineer · Applied AI & Retrieval",
+  location: "Athens, Greece",
+  email: "mavrapidisnikolaos@gmail.com",
+  website: "https://nikosmav.github.io",
+  github: "https://github.com/NikosMav",
+  linkedin: "https://www.linkedin.com/in/nikolaos-mavrapidis",
+  cv: "/assets/cv/Nikos-Mavrapidis-CV.pdf",
+  summary:
+    "Software engineer with production experience across embedded telecom (C/C++), Java product development, and test automation, and co-founder of Lope, an applied-AI recruiting product. Now focused on retrieval, evaluation, and LLM/RAG systems, with security as the edge. Known for owning work end-to-end: investigation, delivery, evidence, and handover.",
+};
+
 export const projects = [
   {
     id: "01",
@@ -47,7 +61,7 @@ export const projects = [
   {
     id: "04",
     title: "Adaptive Museum Experience",
-    eyebrow: "MSc thesis · Browser computer vision",
+    eyebrow: "BSc thesis · Browser computer vision",
     description:
       "A context-aware museum prototype that adapted content using browser-based visual interaction and was evaluated with 13 participants.",
     contribution:
@@ -142,7 +156,7 @@ export const experience = [
     role: "Software Engineer · Java",
     context: "SoftCom International · industrial software client",
     points: [
-      "Delivered a product extension end-to-end across backend and UI, then modernised legacy modules through careful reverse-engineering.",
+      "Delivered a product extension end-to-end across Java/Spring backend and UI, then modernised legacy modules through careful reverse-engineering.",
       "Resolved high-priority defects and maintained delivery tooling across Jenkins and Artifactory.",
     ],
   },
@@ -152,6 +166,8 @@ export const experience = [
     context: "SoftCom International · telecom client",
     points: [
       "Shipped a hitless software upgrade path that reduced planned service interruption from hundreds of milliseconds to zero.",
+      "Developed and hardened Linux-based network software across the full lifecycle—requirements, features, defect fixing, test planning, and maintenance—in C/C++, Scala, Bash, and Python.",
+      "Reverse-engineered third-party code to close compatibility gaps and add features; used networking tools for performance testing and protocol analysis.",
       "Closed high-priority defects and completed the documentation, knowledge transfer, and handover for the work.",
     ],
   },
@@ -188,4 +204,79 @@ export const learning = [
   ["IBM Cybersecurity Analyst", "In progress · ~halfway"],
   ["Cisco Junior Cybersecurity Analyst", "In progress · core modules complete"],
   ["DevOps with AI (Decoding DevOps)", "In progress"],
+];
+
+export const education = [
+  {
+    period: "Oct 2017—Oct 2023",
+    degree: "BSc in Informatics & Telecommunications",
+    school: "National and Kapodistrian University of Athens",
+    detail:
+      "Thesis: a web experience exploring ubiquitous computing, built for the department's Museum of IT & Telecommunications.",
+    href: "https://pergamos.lib.uoa.gr/uoa/dl/object/3362706/file.pdf",
+    linkLabel: "Read thesis",
+  },
+];
+
+export const certifications = [
+  {
+    title: "Software Engineering Basics for Everyone",
+    issuer: "IBM · edX",
+    date: "Nov 2023",
+    href: "https://courses.edx.org/certificates/b9780090bc0d42a38eab8b2781834dff",
+  },
+  {
+    title: "High-Dimensional Data Analysis",
+    issuer: "HarvardX · edX",
+    date: "Oct 2023",
+    href: "https://courses.edx.org/certificates/702a001c324b47549d7ef5bf39f5266a",
+  },
+  {
+    title: "Data Visualization",
+    issuer: "Coursera",
+    date: "Nov 2021",
+    href: "https://www.coursera.org/account/accomplishments/certificate/3Y5SP5UWTK67",
+  },
+  {
+    title: "MPLS All-in-One: fundamentals, L2VPN, L3VPN, traffic engineering",
+    issuer: "Arash Deljoo · online course",
+  },
+  {
+    title: "Learn Python · Learn Node.js · Intro to Vite · Advanced JavaScript",
+    issuer: "Scrimba",
+    date: "May—Jun 2025",
+  },
+];
+
+export const community = [
+  {
+    date: "Feb 2024",
+    title: "1st Greek AI Hackathon",
+    org: "Athens Center for Entrepreneurship and Innovation · AUEB",
+    detail: "Three-day AI hackathon: built an AI solution with a team under expert mentoring.",
+  },
+  {
+    date: "Sep 2023",
+    title: "Student volunteer, MobileHCI 2023",
+    org: "ACM SIGCHI",
+    detail: "Supported sessions, presenters, and on-site equipment testing at the international conference.",
+  },
+  {
+    date: "Feb 2022",
+    title: "Google Hash Code 2022",
+    org: "Athens hub hosted by NTUA",
+    detail: "Solved a team optimisation problem under time pressure and met the competition's target goals.",
+  },
+  {
+    date: "Feb 2022",
+    title: "Hackathon 2022",
+    org: "Team participant",
+    detail: "Worked with a team of experts to conceptualise, design, and develop the project idea.",
+  },
+];
+
+export const languages = [
+  ["Greek", "Native"],
+  ["English", "Certificate of Proficiency · University of Michigan"],
+  ["German", "B1 · ÖSD Zertifikat"],
 ];
