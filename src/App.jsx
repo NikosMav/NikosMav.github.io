@@ -15,16 +15,13 @@ import {
   community,
   education,
   experience,
-  explorations,
   languages,
   profile,
   projects,
-  retrieval,
 } from "./data/portfolio";
 
 const navItems = [
   ["Work", "work"],
-  ["Research", "research"],
   ["Experience", "experience"],
   ["Skills", "skills"],
   ["Education", "education"],
@@ -220,46 +217,9 @@ function Work() {
           </article>
         ))}
       </div>
-    </section>
-  );
-}
-
-function Research() {
-  return (
-    <section className="section research page-shell" id="research" aria-labelledby="research-title">
-      <SectionHeading number="02" id="research-title" title="Retrieval research" />
-      <div className="rnd-list">
-        {retrieval.map((item) => (
-          <article className="rnd-card" key={item.id}>
-            <p className="eyebrow">{item.eyebrow}</p>
-            <h3>{item.title}</h3>
-            <p className="rnd-description">{item.description}</p>
-            <dl className="rnd-metrics" aria-label={`${item.title} evaluation metrics`}>
-              {item.metrics.map(([label, value]) => (
-                <div key={label}>
-                  <dt>{label}</dt>
-                  <dd>{value}</dd>
-                </div>
-              ))}
-            </dl>
-            <Tags items={item.tags} label={`${item.title} methods`} />
-            <ExternalLink className="project-link" href={item.href}>
-              Repository <ArrowUpRight aria-hidden="true" />
-            </ExternalLink>
-          </article>
-        ))}
-      </div>
-      <ul className="more-list" aria-label="More projects">
-        {explorations.map((item) => (
-          <li key={item.title}>
-            <ExternalLink href={item.href}>
-              <strong>{item.title}</strong>
-              <span>{item.blurb}</span>
-              <ArrowUpRight aria-hidden="true" />
-            </ExternalLink>
-          </li>
-        ))}
-      </ul>
+      <ExternalLink className="text-link more-link" href={profile.github}>
+        More projects on GitHub <ArrowUpRight aria-hidden="true" />
+      </ExternalLink>
     </section>
   );
 }
@@ -268,7 +228,7 @@ function Experience() {
   return (
     <section className="section section-ink" id="experience" aria-labelledby="experience-title">
       <div className="page-shell">
-        <SectionHeading number="03" id="experience-title" title="Experience" light />
+        <SectionHeading number="02" id="experience-title" title="Experience" light />
         <div className="timeline">
           {experience.map((item) => (
             <article className="timeline-item" key={`${item.period}-${item.role}`}>
@@ -292,7 +252,7 @@ function Skills() {
   return (
     <section className="section skills" id="skills" aria-labelledby="skills-title">
       <div className="page-shell">
-        <SectionHeading number="04" id="skills-title" title="Skills" light />
+        <SectionHeading number="03" id="skills-title" title="Skills" light />
         <div className="capability-grid">
           {capabilities.map((group) => (
             <article key={group.title}>
@@ -311,7 +271,7 @@ function Skills() {
 function Education() {
   return (
     <section className="section page-shell" id="education" aria-labelledby="education-title">
-      <SectionHeading number="05" id="education-title" title="Education & certifications">
+      <SectionHeading number="04" id="education-title" title="Education & certifications">
         <ExternalLink className="button button-primary heading-action" href={profile.cv}>
           Download CV <FileText aria-hidden="true" />
         </ExternalLink>
@@ -409,7 +369,6 @@ export default function App() {
       <main id="main-content">
         <Hero />
         <Work />
-        <Research />
         <Experience />
         <Skills />
         <Education />

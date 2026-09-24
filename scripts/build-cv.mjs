@@ -16,7 +16,6 @@ import {
   languages,
   profile,
   projects,
-  retrieval,
 } from "../src/data/portfolio.js";
 
 const root = fileURLToPath(new URL("..", import.meta.url));
@@ -71,16 +70,6 @@ const projectsHtml = projects
   )
   .join("");
 
-const retrievalHtml = retrieval
-  .map(
-    (item) => `
-    <article class="project">
-      <h3>${link(item.href, item.title)} <span>· ${escape(item.eyebrow)}</span></h3>
-      <p>${escape(item.description)} <strong>${item.metrics.map(([label, value]) => `${label} ${value}`).join(" · ")}</strong></p>
-    </article>`,
-  )
-  .join("");
-
 const skillsHtml = `<dl class="grid">${capabilities
   .map((group) => `<div><dt>${escape(group.title)}</dt><dd>${group.items.map(escape).join(", ")}</dd></div>`)
   .join("")}</dl>`;
@@ -115,38 +104,37 @@ const languagesHtml = languages.map(([language, level]) => `${escape(language)} 
 
 const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>${escape(profile.name)} — CV</title><style>
 ${fonts}
-@page { size: A4; margin: 14mm 15mm; }
+@page { size: A4; margin: 11mm 13mm; }
 * { box-sizing: border-box; }
-body { margin: 0; color: #171713; font: 400 9.2pt/1.45 "DM Sans", Arial, sans-serif; }
+body { margin: 0; color: #171713; font: 400 8.5pt/1.36 "DM Sans", Arial, sans-serif; }
 a { color: inherit; text-decoration: none; }
 header { display: flex; justify-content: space-between; align-items: flex-end; gap: 22px; padding-bottom: 10px; border-bottom: 2px solid #171713; }
-h1 { margin: 0; font: 500 27pt/0.95 Fraunces, Georgia, serif; letter-spacing: -0.04em; white-space: nowrap; }
+h1 { margin: 0; font: 500 24pt/0.95 Fraunces, Georgia, serif; letter-spacing: -0.04em; white-space: nowrap; }
 h1 span { color: #eb5e2a; }
 .title { margin: 5px 0 0; white-space: nowrap; color: #b33d14; font-size: 8pt; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
 .contact { margin: 0; color: #615e56; font-size: 7.8pt; line-height: 1.55; text-align: right; }
 .contact a { color: #244ed8; }
-.summary { margin: 11px 0 0; font-size: 9.8pt; line-height: 1.45; }
-section { margin-top: 14px; }
+.summary { margin: 8px 0 0; font-size: 9pt; line-height: 1.4; }
+section { margin-top: 9px; }
 h2 { break-after: avoid; margin: 0 0 6px; padding-bottom: 3px; border-bottom: 1px solid rgba(23,23,19,.2); color: #b33d14; font-size: 7.6pt; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
 h3 { margin: 0; font: 500 10.6pt/1.25 Fraunces, Georgia, serif; }
 h3 span { color: #615e56; font: 400 8.3pt "DM Sans", Arial, sans-serif; }
 h3 a { color: #171713; border-bottom: 1px solid rgba(36,78,216,.45); }
-.entry { display: grid; grid-template-columns: 31mm 1fr; gap: 10px; padding: 5px 0; break-inside: avoid; }
+.entry { display: grid; grid-template-columns: 29mm 1fr; gap: 10px; padding: 3px 0; break-inside: avoid; }
 .when { padding-top: 2px; white-space: nowrap; color: #615e56; font-size: 8pt; }
 ul { margin: 3px 0 0; padding-left: 13px; }
-li { margin-top: 1.5px; }
-.project { padding: 3px 0; break-inside: avoid; }
+li { margin-top: 0.5px; }
+.project { padding: 2px 0; break-inside: avoid; }
 .project p, .entry p { margin: 2px 0 0; color: #3d3b36; }
 .entry p a { color: #244ed8; }
 .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 18px; margin: 0; }
 .grid dt { font-weight: 600; }
 .grid dd { margin: 0; color: #3d3b36; }
 .compact { margin: 0; padding: 0; list-style: none; }
-.compact li { margin: 0; padding: 2px 0; }
+.compact li { margin: 0; padding: 1px 0; }
 .compact span { color: #615e56; }
 .compact a { border-bottom: 1px solid rgba(36,78,216,.45); }
-.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; }
-footer { margin-top: 12px; color: #615e56; font-size: 7.4pt; text-align: center; }
+.cols { display: grid; grid-template-columns: 1.5fr 1fr; gap: 0 20px; }
 </style></head><body>
 <header>
   <div>
@@ -164,14 +152,12 @@ footer { margin-top: 12px; color: #615e56; font-size: 7.4pt; text-align: center;
 <p class="summary">${escape(profile.summary)}</p>
 ${section("Experience", experienceHtml)}
 ${section("Selected projects", projectsHtml)}
-${section("Retrieval research", retrievalHtml)}
 ${section("Skills", skillsHtml)}
 ${section("Education", educationHtml)}
 <div class="cols">
   ${section("Certifications &amp; training", certificationsHtml)}
   ${section("Competitions", communityHtml)}
 </div>
-<footer>Legal name: ${escape(profile.legalName)} · Latest version: ${link(profile.website)}</footer>
 </body></html>`;
 
 const browser = await chromium.launch(

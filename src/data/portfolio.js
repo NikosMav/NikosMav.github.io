@@ -1,6 +1,5 @@
 export const profile = {
   name: "Nikos Mavrapidis",
-  legalName: "Nikolaos Mavrapidis",
   title: "Software Engineer · Systems & Applied AI",
   location: "Athens, Greece",
   email: "mavrapidisnikolaos@gmail.com",
@@ -65,49 +64,6 @@ export const projects = [
     image: "/assets/projects/ubiquitous.webp",
     imageAlt: "Adaptive museum introduction quiz",
     theme: "ubiquitous",
-  },
-];
-
-// Headline metrics from each repository's committed evaluation results.
-export const retrieval = [
-  {
-    id: "R1",
-    title: "Netflix Catalog Search",
-    eyebrow: "BM25 · dense · hybrid · rerank",
-    description: "Six retrieval methods compared on 28 labelled catalog queries; best is hybrid RRF with cross-encoder reranking.",
-    metrics: [
-      ["nDCG@10", "0.719"],
-      ["Recall@10", "0.782"],
-      ["MRR", "0.758"],
-    ],
-    tags: ["BM25", "MiniLM", "RRF", "Cross-encoder"],
-    href: "https://github.com/NikosMav/netflix-catalog-search",
-  },
-  {
-    id: "R2",
-    title: "News Evidence Retrieval",
-    eyebrow: "Claim retrieval · SciFact (BEIR)",
-    description: "Ranks scientific abstracts for a claim; hybrid RRF beats the published BEIR BM25 baseline of 0.665.",
-    metrics: [
-      ["nDCG@10", "0.719"],
-      ["Recall@100", "0.955"],
-      ["MRR", "0.687"],
-    ],
-    tags: ["BM25", "MiniLM", "RRF", "BEIR"],
-    href: "https://github.com/NikosMav/news-evidence-retrieval",
-  },
-];
-
-export const explorations = [
-  {
-    title: "Maritime Fuel Optimization",
-    blurb: "Fuel, carbon, and FuelEU / EU ETS cost optimisation with SciPy.",
-    href: "https://github.com/NikosMav/maritime-optimization-case-study",
-  },
-  {
-    title: "GitHub Scraper",
-    blurb: "Python CLI that builds a Markdown CV from a GitHub profile.",
-    href: "https://github.com/NikosMav/github-scraper",
   },
 ];
 
@@ -206,7 +162,7 @@ export const certifications = [
 
 export const community = [
   { title: "1st Greek AI Hackathon", org: "ACEin · AUEB", date: "2024" },
-  { title: "MobileHCI 2023, student volunteer", org: "ACM SIGCHI", date: "2023" },
+  { title: "MobileHCI student volunteer", org: "ACM SIGCHI", date: "2023" },
   { title: "Google Hash Code", org: "Athens hub, NTUA", date: "2022" },
 ];
 
