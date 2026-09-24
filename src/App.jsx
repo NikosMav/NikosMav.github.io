@@ -143,17 +143,17 @@ function Hero() {
           Mavrapidis<span>.</span>
         </h1>
         <p className="hero-statement">
-          I build reliable systems and <em>AI products</em>—from embedded telecom and industrial software to
-          <em> retrieval-first</em> engineering, with security as the edge.
+          I build reliable systems and <em>AI products</em>—from embedded networking and industrial software to
+          satellite data discovery and <em>retrieval-first</em> engineering.
         </p>
         <div className="hero-roles" aria-label="Recent roles">
           <div>
-            <strong>Co-founder</strong>
-            <span>Lope · Oct 2025—Sep 2026</span>
+            <strong>Software Engineer · Space &amp; EO</strong>
+            <span>SoftCom International · Aug 2026—Present</span>
           </div>
           <div>
-            <strong>Test Automation Engineer</strong>
-            <span>SoftCom International · Nov 2025—Present</span>
+            <strong>Co-founder</strong>
+            <span>Lope · Oct 2025—Sep 2026</span>
           </div>
         </div>
         <p className="hero-transition">
@@ -307,7 +307,7 @@ function Experience() {
             <p className="kicker">Experience</p>
             <h2 id="experience-title">A stable progression across hard problems.</h2>
           </div>
-          <p>Production delivery across embedded systems, product engineering, automation, and a concurrent AI startup.</p>
+          <p>Production delivery across embedded networking, industrial software, space &amp; Earth Observation, and a concurrent AI startup.</p>
         </div>
         <div className="timeline">
           {experience.map((item) => (
@@ -431,8 +431,8 @@ function Direction() {
         </div>
         <div className="learning-block">
           <div>
-            <p className="kicker">Active learning</p>
-            <h3>Focused, ongoing development</h3>
+            <p className="kicker">Recent learning</p>
+            <h3>Focused, continuous development</h3>
           </div>
           <dl>
             {learning.map(([title, status]) => (
@@ -463,7 +463,7 @@ function About() {
         <p>
           I am a software engineer based in Athens with a BSc in Informatics &amp; Telecommunications from the
           University of Athens. My path has moved from embedded
-          telecom to Java product development, test automation, and now applied AI. Across each role, the common thread
+          networking to industrial software and test automation, and now to satellite Earth Observation and applied AI. Across each role, the common thread
           is ownership: understand the system, reduce uncertainty, ship the change, and leave it stronger.
         </p>
         <div className="principles">

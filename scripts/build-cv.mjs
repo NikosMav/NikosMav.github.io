@@ -14,7 +14,6 @@ import {
   education,
   experience,
   languages,
-  learning,
   profile,
   projects,
   retrieval,
@@ -60,7 +59,9 @@ const experienceHtml = experience
   )
   .join("");
 
+// Lope is already covered under Experience, so the CV lists the other projects.
 const projectsHtml = projects
+  .filter((item) => !experience.some((role) => role.context.startsWith(item.title)))
   .map(
     (item) => `
     <article class="project">
@@ -104,33 +105,29 @@ const certificationsHtml = `<ul class="compact">${certifications
         [item.issuer, item.date].filter(Boolean).join(" · "),
       )}</span></li>`,
   )
-  .join("")}${learning
-  .map(([title, status]) => `<li>${escape(title)} <span>· ${escape(status)}</span></li>`)
   .join("")}</ul>`;
 
 const communityHtml = `<ul class="compact">${community
   .map((item) => `<li><strong>${escape(item.title)}</strong> <span>· ${escape(item.org)} · ${escape(item.date)}</span></li>`)
   .join("")}</ul>`;
 
-const languagesHtml = `<p class="inline">${languages
-  .map(([language, level]) => `<strong>${escape(language)}</strong> ${escape(level)}`)
-  .join(" &nbsp;·&nbsp; ")}</p>`;
+const languagesHtml = languages.map(([language, level]) => `${escape(language)} (${escape(level)})`).join(" · ");
 
 const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>${escape(profile.name)} — CV</title><style>
 ${fonts}
-@page { size: A4; margin: 13mm 14mm; }
+@page { size: A4; margin: 12mm 14mm; }
 * { box-sizing: border-box; }
-body { margin: 0; color: #171713; font: 400 8.9pt/1.42 "DM Sans", Arial, sans-serif; }
+body { margin: 0; color: #171713; font: 400 8.6pt/1.38 "DM Sans", Arial, sans-serif; }
 a { color: inherit; text-decoration: none; }
-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; padding-bottom: 10px; border-bottom: 2px solid #171713; }
-h1 { margin: 0; font: 500 27pt/0.95 Fraunces, Georgia, serif; letter-spacing: -0.04em; }
+header { display: flex; justify-content: space-between; align-items: flex-end; gap: 22px; padding-bottom: 10px; border-bottom: 2px solid #171713; }
+h1 { margin: 0; font: 500 27pt/0.95 Fraunces, Georgia, serif; letter-spacing: -0.04em; white-space: nowrap; }
 h1 span { color: #eb5e2a; }
-.title { margin: 5px 0 0; color: #b33d14; font-size: 8pt; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
-.contact { margin: 0; color: #615e56; font-size: 8pt; line-height: 1.55; text-align: right; }
+.title { margin: 5px 0 0; white-space: nowrap; color: #b33d14; font-size: 8pt; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+.contact { margin: 0; color: #615e56; font-size: 7.8pt; line-height: 1.55; text-align: right; }
 .contact a { color: #244ed8; }
-.summary { margin: 10px 0 0; font-size: 9.6pt; line-height: 1.45; }
-section { margin-top: 12px; }
-h2 { margin: 0 0 6px; padding-bottom: 3px; border-bottom: 1px solid rgba(23,23,19,.2); color: #b33d14; font-size: 7.6pt; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
+.summary { margin: 9px 0 0; font-size: 9.1pt; line-height: 1.42; }
+section { margin-top: 10px; }
+h2 { break-after: avoid; margin: 0 0 6px; padding-bottom: 3px; border-bottom: 1px solid rgba(23,23,19,.2); color: #b33d14; font-size: 7.6pt; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
 h3 { margin: 0; font: 500 10.6pt/1.25 Fraunces, Georgia, serif; }
 h3 span { color: #615e56; font: 400 8.3pt "DM Sans", Arial, sans-serif; }
 h3 a { color: #171713; border-bottom: 1px solid rgba(36,78,216,.45); }
@@ -148,7 +145,6 @@ li { margin-top: 1.5px; }
 .compact li { margin: 0; padding: 2px 0; }
 .compact span { color: #615e56; }
 .compact a { border-bottom: 1px solid rgba(36,78,216,.45); }
-.inline { margin: 0; }
 .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; }
 footer { margin-top: 12px; color: #615e56; font-size: 7.4pt; text-align: center; }
 </style></head><body>
@@ -158,7 +154,8 @@ footer { margin-top: 12px; color: #615e56; font-size: 7.4pt; text-align: center;
     <p class="title">${escape(profile.title)}</p>
   </div>
   <p class="contact">
-    ${escape(profile.location)} · Military service completed<br>
+    ${escape(profile.location)} · ${escape(profile.availability)}<br>
+    ${languagesHtml}<br>
     ${link(`mailto:${profile.email}`, profile.email)}<br>
     ${link(profile.website)} · ${link(profile.github)}<br>
     ${link(profile.linkedin)}
@@ -171,11 +168,8 @@ ${section("Retrieval &amp; AI R&amp;D", retrievalHtml)}
 ${section("Skills", skillsHtml)}
 ${section("Education", educationHtml)}
 <div class="cols">
-  ${section("Certifications &amp; learning", certificationsHtml)}
-  <div>
-    ${section("Competitions &amp; community", communityHtml)}
-    ${section("Languages", languagesHtml)}
-  </div>
+  ${section("Certifications &amp; training", certificationsHtml)}
+  ${section("Competitions &amp; community", communityHtml)}
 </div>
 <footer>Legal name: ${escape(profile.legalName)} · Latest version: ${link(profile.website)}</footer>
 </body></html>`;
