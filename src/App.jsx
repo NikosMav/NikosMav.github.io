@@ -1,14 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import {
   ArrowDown,
-  ArrowRight,
   ArrowUpRight,
   EnvelopeSimple,
   FileText,
   GithubLogo,
   LinkedinLogo,
   List,
-  MapPin,
   X,
 } from "@phosphor-icons/react";
 import {
@@ -19,7 +17,6 @@ import {
   experience,
   explorations,
   languages,
-  learning,
   profile,
   projects,
   retrieval,
@@ -27,11 +24,10 @@ import {
 
 const navItems = [
   ["Work", "work"],
-  ["AI R&D", "ai-rnd"],
+  ["Research", "research"],
   ["Experience", "experience"],
-  ["Credentials", "credentials"],
-  ["Direction", "direction"],
-  ["About", "about"],
+  ["Skills", "skills"],
+  ["Education", "education"],
 ];
 
 function ExternalLink({ href, children, className = "" }) {
@@ -124,7 +120,7 @@ function Header() {
             {label}
           </a>
         ))}
-        <a className="nav-contact" href="mailto:mavrapidisnikolaos@gmail.com">
+        <a className="nav-contact" href={`mailto:${profile.email}`}>
           Contact <ArrowUpRight aria-hidden="true" />
         </a>
       </nav>
@@ -132,47 +128,50 @@ function Header() {
   );
 }
 
+function SectionHeading({ number, id, title, light = false, children }) {
+  return (
+    <div className={`section-heading${light ? " section-heading-light" : ""}`}>
+      <p className="section-number">{number}</p>
+      <h2 id={id}>{title}</h2>
+      {children}
+    </div>
+  );
+}
+
 function Hero() {
   return (
     <section className="hero page-shell" aria-labelledby="hero-title">
       <div className="hero-copy">
-        <p className="kicker">Software engineer · Moving into applied AI</p>
+        <p className="kicker">{profile.title}</p>
         <h1 id="hero-title">
           Nikos
           <br />
           Mavrapidis<span>.</span>
         </h1>
         <p className="hero-statement">
-          I build reliable systems and <em>AI products</em>—from embedded networking and industrial software to
-          satellite data discovery and <em>retrieval-first</em> engineering.
+          I build reliable systems and <em>AI products</em>, from embedded networking to satellite data and
+          retrieval.
         </p>
         <div className="hero-roles" aria-label="Recent roles">
-          <div>
-            <strong>Software Engineer · Space &amp; EO</strong>
-            <span>SoftCom International · Aug 2026—Present</span>
-          </div>
-          <div>
-            <strong>Co-founder</strong>
-            <span>Lope · Oct 2025—Sep 2026</span>
-          </div>
+          {experience.slice(0, 2).map((item) => (
+            <div key={item.role}>
+              <strong>{item.role.replace("Software Engineer · ", "")}</strong>
+              <span>{item.context.split(" · ")[0]} · {item.period}</span>
+            </div>
+          ))}
         </div>
-        <p className="hero-transition">
-          <span>Since Jul 2026</span> deliberately transitioning into applied AI &amp; retrieval engineering—
-          upskilling, certifying, and building it into hands-on projects.
-        </p>
         <div className="hero-actions">
           <a className="button button-primary" href="#work">
-            View selected work <ArrowDown aria-hidden="true" />
+            View work <ArrowDown aria-hidden="true" />
           </a>
-          <a className="text-link" href="#experience">
-            View experience <ArrowRight aria-hidden="true" />
-          </a>
+          <ExternalLink className="text-link" href={profile.cv}>
+            Download CV <FileText aria-hidden="true" />
+          </ExternalLink>
         </div>
         <div className="hero-meta">
-          <span><MapPin aria-hidden="true" /> Athens, Greece</span>
-          <ExternalLink href="https://github.com/NikosMav"><GithubLogo aria-hidden="true" /> GitHub</ExternalLink>
-          <ExternalLink href="https://www.linkedin.com/in/nikolaos-mavrapidis"><LinkedinLogo aria-hidden="true" /> LinkedIn</ExternalLink>
-          <ExternalLink href={profile.cv}><FileText aria-hidden="true" /> CV (PDF)</ExternalLink>
+          <span>{profile.location}</span>
+          <ExternalLink href={profile.github}><GithubLogo aria-hidden="true" /> GitHub</ExternalLink>
+          <ExternalLink href={profile.linkedin}><LinkedinLogo aria-hidden="true" /> LinkedIn</ExternalLink>
         </div>
       </div>
       <figure className="portrait-wrap">
@@ -186,83 +185,55 @@ function Hero() {
             fetchPriority="high"
           />
         </picture>
-        <figcaption>Software &amp; product engineering.</figcaption>
       </figure>
     </section>
   );
 }
 
-function Project({ project }) {
+function Tags({ items, label }) {
   return (
-    <article className="project-row">
-      <div className={`project-visual project-${project.theme}`}>
-        <img src={project.image} alt={project.imageAlt} width="1200" height="675" loading="lazy" />
-        <span>{project.id}</span>
-      </div>
-      <div className="project-copy">
-        <p className="eyebrow">{project.eyebrow}</p>
-        <h3>{project.title}</h3>
-        <p className="project-description">{project.description}</p>
-        <p className="project-contribution"><strong>My work:</strong> {project.contribution}</p>
-        <ul className="tag-list" aria-label={`${project.title} technologies and focus`}>
-          {project.tags.map((tag) => <li key={tag}>{tag}</li>)}
-        </ul>
-        <ExternalLink className="project-link" href={project.href}>
-          {project.linkLabel} <ArrowUpRight aria-hidden="true" />
-        </ExternalLink>
-      </div>
-    </article>
+    <ul className="tag-list" aria-label={label}>
+      {items.map((tag) => <li key={tag}>{tag}</li>)}
+    </ul>
   );
 }
 
 function Work() {
   return (
     <section className="section page-shell" id="work" aria-labelledby="work-title">
-      <div className="section-heading">
-        <p className="section-number">01</p>
-        <div>
-          <p className="kicker">Selected work</p>
-          <h2 id="work-title">Selected work, with outcomes.</h2>
-        </div>
-        <p>Four projects that show product ownership, systems depth, and the direction I am moving in.</p>
-      </div>
+      <SectionHeading number="01" id="work-title" title="Selected work" />
       <div className="project-list">
-        {projects.map((project) => <Project key={project.id} project={project} />)}
-      </div>
-      <div className="more-work">
-        <span>More open-source work</span>
-        <div>
-          <strong>GitHub Scraper</strong>
-          <p>A small Python CLI for collecting structured public repository data.</p>
-        </div>
-        <ExternalLink href="https://github.com/NikosMav/github-scraper">
-          View repository <ArrowUpRight aria-hidden="true" />
-        </ExternalLink>
+        {projects.map((project) => (
+          <article className="project-row" key={project.id}>
+            <div className={`project-visual project-${project.theme}`}>
+              <img src={project.image} alt={project.imageAlt} width="1200" height="675" loading="lazy" />
+            </div>
+            <div className="project-copy">
+              <p className="eyebrow">{project.eyebrow}</p>
+              <h3>{project.title}</h3>
+              <p className="project-description">{project.description}</p>
+              <Tags items={project.tags} label={`${project.title} technologies`} />
+              <ExternalLink className="project-link" href={project.href}>
+                {project.linkLabel} <ArrowUpRight aria-hidden="true" />
+              </ExternalLink>
+            </div>
+          </article>
+        ))}
       </div>
     </section>
   );
 }
 
-function AiRnd() {
+function Research() {
   return (
-    <section className="section ai-rnd page-shell" id="ai-rnd" aria-labelledby="ai-rnd-title">
-      <div className="section-heading">
-        <p className="section-number">02</p>
-        <div>
-          <p className="kicker">Retrieval &amp; AI R&amp;D</p>
-          <h2 id="ai-rnd-title">The retrieval work behind the move.</h2>
-        </div>
-        <p>Hands-on retrieval systems with reproducible evaluation—lexical, dense, hybrid, and reranking, measured rather than asserted.</p>
-      </div>
+    <section className="section research page-shell" id="research" aria-labelledby="research-title">
+      <SectionHeading number="02" id="research-title" title="Retrieval research" />
       <div className="rnd-list">
         {retrieval.map((item) => (
           <article className="rnd-card" key={item.id}>
-            <div className="rnd-card-head">
-              <p className="eyebrow">{item.eyebrow}</p>
-              <h3>{item.title}</h3>
-            </div>
+            <p className="eyebrow">{item.eyebrow}</p>
+            <h3>{item.title}</h3>
             <p className="rnd-description">{item.description}</p>
-            <p className="rnd-detail">{item.detail}</p>
             <dl className="rnd-metrics" aria-label={`${item.title} evaluation metrics`}>
               {item.metrics.map(([label, value]) => (
                 <div key={label}>
@@ -271,28 +242,24 @@ function AiRnd() {
                 </div>
               ))}
             </dl>
-            <p className="rnd-note">{item.note}</p>
-            <ul className="tag-list" aria-label={`${item.title} methods`}>
-              {item.tags.map((tag) => <li key={tag}>{tag}</li>)}
-            </ul>
+            <Tags items={item.tags} label={`${item.title} methods`} />
             <ExternalLink className="project-link" href={item.href}>
-              {item.linkLabel} <ArrowUpRight aria-hidden="true" />
+              Repository <ArrowUpRight aria-hidden="true" />
             </ExternalLink>
           </article>
         ))}
       </div>
-      <div className="rnd-more">
-        <span>More applied ML &amp; optimization</span>
-        <div className="rnd-more-list">
-          {explorations.map((item) => (
-            <ExternalLink className="rnd-more-item" href={item.href} key={item.title}>
+      <ul className="more-list" aria-label="More projects">
+        {explorations.map((item) => (
+          <li key={item.title}>
+            <ExternalLink href={item.href}>
               <strong>{item.title}</strong>
-              <p>{item.blurb}</p>
-              <span className="rnd-more-link">View repository <ArrowUpRight aria-hidden="true" /></span>
+              <span>{item.blurb}</span>
+              <ArrowUpRight aria-hidden="true" />
             </ExternalLink>
-          ))}
-        </div>
-      </div>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }
@@ -301,14 +268,7 @@ function Experience() {
   return (
     <section className="section section-ink" id="experience" aria-labelledby="experience-title">
       <div className="page-shell">
-        <div className="section-heading section-heading-light">
-          <p className="section-number">03</p>
-          <div>
-            <p className="kicker">Experience</p>
-            <h2 id="experience-title">A stable progression across hard problems.</h2>
-          </div>
-          <p>Production delivery across embedded networking, industrial software, space &amp; Earth Observation, and a concurrent AI startup.</p>
-        </div>
+        <SectionHeading number="03" id="experience-title" title="Experience" light />
         <div className="timeline">
           {experience.map((item) => (
             <article className="timeline-item" key={`${item.period}-${item.role}`}>
@@ -328,27 +288,39 @@ function Experience() {
   );
 }
 
-function Credentials() {
+function Skills() {
   return (
-    <section className="section credentials page-shell" id="credentials" aria-labelledby="credentials-title">
-      <div className="section-heading">
-        <p className="section-number">04</p>
-        <div>
-          <p className="kicker">Education &amp; credentials</p>
-          <h2 id="credentials-title">The foundations behind the work.</h2>
-        </div>
-        <div className="credentials-cv">
-          <p>Education, certifications, and community work. The full CV has everything on one page.</p>
-          <ExternalLink className="button button-primary" href={profile.cv}>
-            Download CV <FileText aria-hidden="true" />
-          </ExternalLink>
+    <section className="section skills" id="skills" aria-labelledby="skills-title">
+      <div className="page-shell">
+        <SectionHeading number="04" id="skills-title" title="Skills" light />
+        <div className="capability-grid">
+          {capabilities.map((group) => (
+            <article key={group.title}>
+              <h3>{group.title}</h3>
+              <ul>
+                {group.items.map((item) => <li key={item}>{item}</li>)}
+              </ul>
+            </article>
+          ))}
         </div>
       </div>
+    </section>
+  );
+}
+
+function Education() {
+  return (
+    <section className="section page-shell" id="education" aria-labelledby="education-title">
+      <SectionHeading number="05" id="education-title" title="Education & certifications">
+        <ExternalLink className="button button-primary heading-action" href={profile.cv}>
+          Download CV <FileText aria-hidden="true" />
+        </ExternalLink>
+      </SectionHeading>
       <div className="credentials-grid">
         <div className="credentials-column">
           {education.map((item) => (
             <article className="education-card" key={item.degree}>
-              <p className="eyebrow">Education · {item.period}</p>
+              <p className="eyebrow">{item.period}</p>
               <h3>{item.degree}</h3>
               <span>{item.school}</span>
               <p>{item.detail}</p>
@@ -382,94 +354,22 @@ function Credentials() {
                   ) : (
                     <strong>{item.title}</strong>
                   )}
-                  <span>{[item.issuer, item.date].filter(Boolean).join(" · ")}</span>
+                  <span>{item.issuer} · {item.date}</span>
                 </li>
               ))}
             </ul>
           </div>
           <div className="credential-block">
-            <h3>Competitions &amp; community</h3>
+            <h3>Competitions</h3>
             <ul className="credential-list">
               {community.map((item) => (
                 <li key={item.title}>
                   <strong>{item.title}</strong>
                   <span>{item.org} · {item.date}</span>
-                  <p>{item.detail}</p>
                 </li>
               ))}
             </ul>
           </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Direction() {
-  return (
-    <section className="section direction" id="direction" aria-labelledby="direction-title">
-      <div className="page-shell direction-grid">
-        <div className="direction-intro">
-          <p className="section-number">05</p>
-          <p className="kicker">Direction</p>
-          <h2 id="direction-title">Toward secure-AI engineering.</h2>
-          <p>
-            My goal is a single identity: a secure-AI &amp; retrieval engineer. AI at the core—retrieval, evaluation,
-            embeddings, and LLM/RAG systems—with security as the edge: provenance, access control, and safe integration.
-            Lope and my retrieval R&amp;D are where that shift became practical work.
-          </p>
-        </div>
-        <div className="capability-grid">
-          {capabilities.map((group) => (
-            <article key={group.title}>
-              <h3>{group.title}</h3>
-              <ul>
-                {group.items.map((item) => <li key={item}>{item}</li>)}
-              </ul>
-            </article>
-          ))}
-        </div>
-        <div className="learning-block">
-          <div>
-            <p className="kicker">Recent learning</p>
-            <h3>Focused, continuous development</h3>
-          </div>
-          <dl>
-            {learning.map(([title, status]) => (
-              <div key={title}>
-                <dt>{title}</dt>
-                <dd>{status}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function About() {
-  return (
-    <section className="section about page-shell" id="about" aria-labelledby="about-title">
-      <div className="section-heading">
-        <p className="section-number">06</p>
-        <div>
-          <p className="kicker">About</p>
-          <h2 id="about-title">Ownership from investigation to handover.</h2>
-        </div>
-        <p>That means clear decisions, measurable outcomes, maintainable systems, and documentation that survives the handover.</p>
-      </div>
-      <div className="about-grid">
-        <p>
-          I am a software engineer based in Athens with a BSc in Informatics &amp; Telecommunications from the
-          University of Athens. My path has moved from embedded
-          networking to industrial software and test automation, and now to satellite Earth Observation and applied AI. Across each role, the common thread
-          is ownership: understand the system, reduce uncertainty, ship the change, and leave it stronger.
-        </p>
-        <div className="principles">
-          <div><span>01</span><strong>Own the outcome</strong><p>Features, failures, evidence, and handover—not just assigned tickets.</p></div>
-          <div><span>02</span><strong>Make reliability visible</strong><p>Use tests, metrics, and reproducible evidence to build confidence.</p></div>
-          <div><span>03</span><strong>Keep learning pointed</strong><p>Study what supports the next useful product or system.</p></div>
         </div>
       </div>
     </section>
@@ -480,20 +380,17 @@ function Footer() {
   return (
     <footer id="contact">
       <div className="page-shell footer-grid">
-        <div>
-          <p className="kicker">Let’s talk</p>
-          <h2>Building something that needs both product sense and engineering depth?</h2>
-        </div>
-        <a className="footer-email" href="mailto:mavrapidisnikolaos@gmail.com">
+        <h2>Get in touch.</h2>
+        <a className="footer-email" href={`mailto:${profile.email}`}>
           <EnvelopeSimple aria-hidden="true" />
-          mavrapidisnikolaos@gmail.com
+          {profile.email}
           <ArrowUpRight aria-hidden="true" />
         </a>
         <div className="footer-bottom">
-          <span suppressHydrationWarning>© {new Date().getFullYear()} Nikos Mavrapidis</span>
+          <span suppressHydrationWarning>© {new Date().getFullYear()} {profile.name}</span>
           <div>
-            <ExternalLink href="https://github.com/NikosMav">GitHub</ExternalLink>
-            <ExternalLink href="https://www.linkedin.com/in/nikolaos-mavrapidis">LinkedIn</ExternalLink>
+            <ExternalLink href={profile.github}>GitHub</ExternalLink>
+            <ExternalLink href={profile.linkedin}>LinkedIn</ExternalLink>
             <ExternalLink href={profile.cv}>CV</ExternalLink>
             <a href="#top">Back to top ↑</a>
           </div>
@@ -512,11 +409,10 @@ export default function App() {
       <main id="main-content">
         <Hero />
         <Work />
-        <AiRnd />
+        <Research />
         <Experience />
-        <Credentials />
-        <Direction />
-        <About />
+        <Skills />
+        <Education />
       </main>
       <Footer />
     </>

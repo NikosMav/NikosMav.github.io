@@ -66,7 +66,7 @@ const projectsHtml = projects
     (item) => `
     <article class="project">
       <h3>${link(item.href, item.title)} <span>· ${escape(item.eyebrow)}</span></h3>
-      <p>${escape(item.description)} ${escape(item.contribution)}</p>
+      <p>${escape(item.description)}</p>
     </article>`,
   )
   .join("");
@@ -75,7 +75,7 @@ const retrievalHtml = retrieval
   .map(
     (item) => `
     <article class="project">
-      <h3>${link(item.href, item.title)} <span>· ${escape(item.eyebrow.replace(/^Retrieval R&D · /, ""))}</span></h3>
+      <h3>${link(item.href, item.title)} <span>· ${escape(item.eyebrow)}</span></h3>
       <p>${escape(item.description)} <strong>${item.metrics.map(([label, value]) => `${label} ${value}`).join(" · ")}</strong></p>
     </article>`,
   )
@@ -92,7 +92,7 @@ const educationHtml = education
       <div class="when">${escape(item.period)}</div>
       <div>
         <h3>${escape(item.degree)} <span>· ${escape(item.school)}</span></h3>
-        <p>${escape(item.detail)} ${link(item.href, item.linkLabel)}</p>
+        <p>${escape(item.detail)} · ${link(item.href, item.linkLabel)}</p>
       </div>
     </article>`,
   )
@@ -111,13 +111,13 @@ const communityHtml = `<ul class="compact">${community
   .map((item) => `<li><strong>${escape(item.title)}</strong> <span>· ${escape(item.org)} · ${escape(item.date)}</span></li>`)
   .join("")}</ul>`;
 
-const languagesHtml = languages.map(([language, level]) => `${escape(language)} (${escape(level)})`).join(" · ");
+const languagesHtml = languages.map(([language, level]) => `${escape(language)} ${escape(level)}`).join(" · ");
 
 const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>${escape(profile.name)} — CV</title><style>
 ${fonts}
-@page { size: A4; margin: 12mm 14mm; }
+@page { size: A4; margin: 14mm 15mm; }
 * { box-sizing: border-box; }
-body { margin: 0; color: #171713; font: 400 8.6pt/1.38 "DM Sans", Arial, sans-serif; }
+body { margin: 0; color: #171713; font: 400 9.2pt/1.45 "DM Sans", Arial, sans-serif; }
 a { color: inherit; text-decoration: none; }
 header { display: flex; justify-content: space-between; align-items: flex-end; gap: 22px; padding-bottom: 10px; border-bottom: 2px solid #171713; }
 h1 { margin: 0; font: 500 27pt/0.95 Fraunces, Georgia, serif; letter-spacing: -0.04em; white-space: nowrap; }
@@ -125,8 +125,8 @@ h1 span { color: #eb5e2a; }
 .title { margin: 5px 0 0; white-space: nowrap; color: #b33d14; font-size: 8pt; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
 .contact { margin: 0; color: #615e56; font-size: 7.8pt; line-height: 1.55; text-align: right; }
 .contact a { color: #244ed8; }
-.summary { margin: 9px 0 0; font-size: 9.1pt; line-height: 1.42; }
-section { margin-top: 10px; }
+.summary { margin: 11px 0 0; font-size: 9.8pt; line-height: 1.45; }
+section { margin-top: 14px; }
 h2 { break-after: avoid; margin: 0 0 6px; padding-bottom: 3px; border-bottom: 1px solid rgba(23,23,19,.2); color: #b33d14; font-size: 7.6pt; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
 h3 { margin: 0; font: 500 10.6pt/1.25 Fraunces, Georgia, serif; }
 h3 span { color: #615e56; font: 400 8.3pt "DM Sans", Arial, sans-serif; }
@@ -164,12 +164,12 @@ footer { margin-top: 12px; color: #615e56; font-size: 7.4pt; text-align: center;
 <p class="summary">${escape(profile.summary)}</p>
 ${section("Experience", experienceHtml)}
 ${section("Selected projects", projectsHtml)}
-${section("Retrieval &amp; AI R&amp;D", retrievalHtml)}
+${section("Retrieval research", retrievalHtml)}
 ${section("Skills", skillsHtml)}
 ${section("Education", educationHtml)}
 <div class="cols">
   ${section("Certifications &amp; training", certificationsHtml)}
-  ${section("Competitions &amp; community", communityHtml)}
+  ${section("Competitions", communityHtml)}
 </div>
 <footer>Legal name: ${escape(profile.legalName)} · Latest version: ${link(profile.website)}</footer>
 </body></html>`;
