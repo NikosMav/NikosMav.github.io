@@ -54,15 +54,15 @@ export const projects = [
   },
   {
     id: "04",
-    title: "Adaptive Museum Experience",
-    eyebrow: "BSc thesis · Computer vision",
+    title: "Ubiquitous Computing Exhibit",
+    eyebrow: "BSc thesis · NKUA · 2023—2026",
     description:
-      "Context-aware museum prototype driven by browser-based computer vision, evaluated with 13 participants.",
-    tags: ["Computer vision", "Research", "Web"],
+      "Interactive museum exhibit that explains ubiquitous computing through a scrolling story, short quizzes, and camera experiments.",
+    tags: ["Web", "Computer vision", "Education"],
     href: "https://nikosmav.github.io/ubiquitous-computing.github.io/",
-    linkLabel: "Open project",
-    image: "/assets/projects/ubiquitous.webp",
-    imageAlt: "Adaptive museum introduction quiz",
+    linkLabel: "Open exhibit",
+    image: "/assets/projects/ubiquitous.jpg",
+    imageAlt: "Title screen of the ubiquitous computing exhibit",
     theme: "ubiquitous",
   },
 ];
