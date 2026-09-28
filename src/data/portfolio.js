@@ -44,7 +44,7 @@ export const projects = [
     title: "Worthify",
     eyebrow: "Team project · 1st Greek AI Hackathon · Nov 2023—May 2024",
     description:
-      "Team prototype: used-car valuation on 100,000+ listings; R² ≈ 0.93, median error ≈ 10% on a leak-free re-evaluation.",
+      "Team prototype: used-car valuation on ~90,000 listings; R² ≈ 0.93, ~10% median error.",
     tags: ["Python", "scikit-learn"],
     href: "https://github.com/NikosMav/worthify-case-study",
     linkLabel: "Case study",
