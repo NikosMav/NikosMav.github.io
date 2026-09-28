@@ -32,7 +32,7 @@ npm run preview
 
 ## CV
 
-The downloadable CV (`public/assets/cv/Nikos-Mavrapidis-CV.pdf`) is generated from the same data as the site in [`src/data/portfolio.js`](src/data/portfolio.js). After editing that data, regenerate and commit the PDF:
+No CV is published on the site right now. [`scripts/build-cv.mjs`](scripts/build-cv.mjs) can still generate one from [`src/data/portfolio.js`](src/data/portfolio.js) when needed:
 
 ```bash
 npx playwright install chromium   # once, or set CHROMIUM_PATH to an installed Chrome
