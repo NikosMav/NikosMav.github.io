@@ -9,14 +9,14 @@ export const profile = {
   availability: "EU citizen · Open to relocation to Germany · Military service completed",
   cv: "/assets/cv/Nikos-Mavrapidis-CV.pdf",
   summary:
-    "Software engineer with nearly three years of experience across embedded networking, industrial software, and satellite Earth Observation, and co-founder of an AI recruitment startup. Focused on reliable systems, retrieval, and applied AI.",
+    "Software engineer with nearly three years across embedded networking, industrial software, and satellite Earth Observation; part-time co-founder of an AI recruitment startup (2025–2026). Focused on reliable systems, retrieval, and applied AI.",
 };
 
 export const projects = [
   {
     id: "01",
     title: "Lope",
-    eyebrow: "AI startup · Co-founder · 2025—2026",
+    eyebrow: "AI startup · Co-founder, part-time · Oct 2025—Sep 2026",
     description:
       "Recruiter-first AI workspace that turns role briefs and candidate evidence into ranked, explainable shortlists. Used in production by recruiting agencies.",
     tags: ["Applied AI", "Retrieval", "Full-stack"],
@@ -42,9 +42,9 @@ export const projects = [
   {
     id: "03",
     title: "Worthify",
-    eyebrow: "1st Greek AI Hackathon · 2023—2024",
+    eyebrow: "Team project · 1st Greek AI Hackathon · Nov 2023—May 2024",
     description:
-      "Used-car valuation trained on 100,000+ listings: R² 0.97 and ~6% median error, served through a REST API.",
+      "Team prototype: used-car valuation on 100,000+ listings; team-reported R² 0.97, ~6% median error.",
     tags: ["Python", "scikit-learn", "REST API"],
     href: "https://github.com/NikosMav/worthify-case-study",
     linkLabel: "Case study",
@@ -55,7 +55,7 @@ export const projects = [
   {
     id: "04",
     title: "Ubiquitous Computing Exhibit",
-    eyebrow: "BSc thesis · NKUA · 2023—2026",
+    eyebrow: "BSc thesis · NKUA · published Oct 2023 · exhibit 2026",
     description:
       "Interactive museum exhibit that explains ubiquitous computing through a scrolling story, short quizzes, and camera experiments.",
     tags: ["Web", "Computer vision", "Education"],
@@ -69,18 +69,25 @@ export const projects = [
 
 export const experience = [
   {
-    period: "Aug 2026—Present",
+    period: "Jul 2026—Present",
     role: "Software Engineer · Space & Earth Observation",
     context: "SoftCom International · European space project",
     points: [
-      "Satellite data discovery built on Earth Observation metadata, STAC catalogues, and cloud imagery archives.",
-      "Earth Observation training through NASA ARSET.",
+      "Working on an Earth Observation project focused on satellite-data discovery, STAC catalogues, and retrieval/vector-search architectures for distributed geospatial datasets.",
+    ],
+  },
+  {
+    period: "Nov 2025—Jul 2026",
+    role: "Software Engineer · Industrial Printing (Test Automation)",
+    context: "SoftCom International",
+    points: [
+      "Robot Framework UI and REST automation across four modules; Jenkins and Gradle/Maven builds.",
     ],
   },
   {
     period: "Oct 2025—Sep 2026",
     role: "Co-founder",
-    context: "Lope · AI recruitment startup",
+    context: "Lope · AI recruitment startup · part-time, alongside SoftCom",
     points: [
       "Built the retrieval stack: hybrid search on Milvus, rank fusion, and RAG with verified citations.",
       "Owned the production architecture: Next.js, TypeScript, PostgreSQL with row-level security, and CI.",
@@ -88,13 +95,12 @@ export const experience = [
     ],
   },
   {
-    period: "Jun 2025—Jul 2026",
-    role: "Software Engineer · Industrial Printing",
-    context: "SoftCom International · Java developer, then test automation",
+    period: "Jun 2025—Dec 2025",
+    role: "Software Engineer · Industrial Printing (Java)",
+    context: "SoftCom International",
     points: [
       "Delivered a backend and front-end module extension and modernised legacy modules.",
       "Led a critical memory-leak investigation from profiling to fix and regression tests.",
-      "Built Robot Framework UI and REST automation across four modules; maintained Jenkins and Gradle/Maven builds.",
     ],
   },
   {
@@ -106,6 +112,12 @@ export const experience = [
       "Delivered Hitless Software Upgrades, cutting upgrade downtime from hundreds of milliseconds to zero.",
       "Integrated a third-party routing stack; validated control and data planes with Wireshark and Spirent.",
     ],
+  },
+  {
+    period: "Nov 2022—Aug 2023",
+    role: "Military service",
+    context: "Hellenic Armed Forces",
+    points: [],
   },
 ];
 
@@ -131,11 +143,11 @@ export const capabilities = [
 export const education = [
   {
     period: "2017—2022",
-    degree: "BSc Informatics & Telecommunications",
+    degree: "BSc in Informatics and Telecommunications",
     school: "National and Kapodistrian University of Athens",
     detail: "240 ECTS · Grade 7.67 / 10",
     href: "https://pergamos.lib.uoa.gr/uoa/dl/object/3362706/file.pdf",
-    linkLabel: "Thesis",
+    linkLabel: "BSc thesis (published Oct 2023)",
   },
 ];
 

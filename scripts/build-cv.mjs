@@ -115,12 +115,12 @@ h1 span { color: #eb5e2a; }
 .contact { margin: 0; color: #615e56; font-size: 7.8pt; line-height: 1.55; text-align: right; }
 .contact a { color: #244ed8; }
 .summary { margin: 8px 0 0; font-size: 9pt; line-height: 1.4; }
-section { margin-top: 9px; }
+section { margin-top: 7px; }
 h2 { break-after: avoid; margin: 0 0 6px; padding-bottom: 3px; border-bottom: 1px solid rgba(23,23,19,.2); color: #b33d14; font-size: 7.6pt; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
 h3 { margin: 0; font: 500 10.6pt/1.25 Fraunces, Georgia, serif; }
 h3 span { color: #615e56; font: 400 8.3pt "DM Sans", Arial, sans-serif; }
 h3 a { color: #171713; border-bottom: 1px solid rgba(36,78,216,.45); }
-.entry { display: grid; grid-template-columns: 29mm 1fr; gap: 10px; padding: 3px 0; break-inside: avoid; }
+.entry { display: grid; grid-template-columns: 29mm 1fr; gap: 10px; padding: 2px 0; break-inside: avoid; }
 .when { padding-top: 2px; white-space: nowrap; color: #615e56; font-size: 8pt; }
 ul { margin: 3px 0 0; padding-left: 13px; }
 li { margin-top: 0.5px; }

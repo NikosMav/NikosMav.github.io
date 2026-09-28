@@ -3,7 +3,6 @@ import {
   ArrowDown,
   ArrowUpRight,
   EnvelopeSimple,
-  FileText,
   GithubLogo,
   LinkedinLogo,
   List,
@@ -161,9 +160,6 @@ function Hero() {
           <a className="button button-primary" href="#work">
             View work <ArrowDown aria-hidden="true" />
           </a>
-          <ExternalLink className="text-link" href={profile.cv}>
-            Download CV <FileText aria-hidden="true" />
-          </ExternalLink>
         </div>
         <div className="hero-meta">
           <span>{profile.location}</span>
@@ -271,11 +267,7 @@ function Skills() {
 function Education() {
   return (
     <section className="section page-shell" id="education" aria-labelledby="education-title">
-      <SectionHeading number="04" id="education-title" title="Education & certifications">
-        <ExternalLink className="button button-primary heading-action" href={profile.cv}>
-          Download CV <FileText aria-hidden="true" />
-        </ExternalLink>
-      </SectionHeading>
+      <SectionHeading number="04" id="education-title" title="Education & certifications" />
       <div className="credentials-grid">
         <div className="credentials-column">
           {education.map((item) => (
@@ -351,7 +343,6 @@ function Footer() {
           <div>
             <ExternalLink href={profile.github}>GitHub</ExternalLink>
             <ExternalLink href={profile.linkedin}>LinkedIn</ExternalLink>
-            <ExternalLink href={profile.cv}>CV</ExternalLink>
             <a href="#top">Back to top ↑</a>
           </div>
         </div>
